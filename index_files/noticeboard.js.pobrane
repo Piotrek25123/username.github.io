@@ -1,0 +1,223 @@
+function addNotice()
+{
+    document.location.href = '/ogloszenia/zarzadzaj/dodaj';
+}
+
+function editNotice(identifier)
+{
+    document.location.href = '/ogloszenia/zarzadzaj/modyfikuj/' + identifier;
+}
+
+function deleteNotice(identifier)
+{
+    show_message(
+        'warning',
+        'Potwierdzenie',
+        'Czy na pewno usunąć to ogłoszenie?',
+        [
+            {
+                value: 'Tak',
+                close: true,
+                click: function () {
+                    $.ajax({
+                        dataType: "json",
+                        type: 'DELETE',
+                        url: '/ogloszenia/zarzadzaj/usun/' + identifier,
+                        success: function () {
+                            var noticeRow = $("#" + identifier);
+                            var noticeTable = noticeRow.closest("table");
+                            noticeRow.remove().promise().done(function () {
+                                recolor_table(noticeTable);
+                                show_message('information', 'Usunięto', 'Ogłoszenie zostało usunięte.', ['ok']);
+                                if (noticeTable.find('tbody tr').length == 0) {
+                                    noticeTable.replaceWith(
+                                        $('<div class="container border-red resizeable center"><div class="container-background"><p>Brak ogłoszeń</p></div></div>')
+                                    );
+                                }
+                            });
+                        },
+                        error: function () {
+                            show_message('error', 'Błąd', 'Usunięcie ogłoszenia nie powiodło się.', ['ok']);
+                        }
+                    });
+                }
+            },
+            {
+                value: 'Nie',
+                close: true,
+                focus: true
+            }
+        ],
+        true
+    );
+}
+
+function changeManageView(type)
+{
+    document.location.href = '/ogloszenia/zarzadzaj/' + type;
+}
+
+function postNewNotice(form, errorProvider) {
+    if (!validateNoticeForm(
+        errorProvider,
+        form.find('input[name=title]'),
+        form.find('input[name="accounts[]"]#students'),
+        form.find('input[name="accounts[]"]#parents'),
+        form.find('input[name="accounts[]"]#teachers'),
+        form.find('input[name=periodBegin]'),
+        form.find('input[name=periodEnd]'),
+        form.find('textarea[name=content]')
+    )) {
+        return;
+    }
+
+    $.ajax({
+        dataType: "json",
+        type: "post",
+        url: '/ogloszenia/zarzadzaj/dodaj',
+        data: form.serialize(),
+        success: function() {
+            box = show_message('information', 'Dodano ogłoszenie', 'Ogłoszenie zostało pomyślnie dodane.', ['ok'], true);
+            box.find('.warning-close,input[type=button][value=OK]').click(function(){
+                goBackOrToNoticeboardMainPage();
+                return true;
+            });
+        },
+        error: function(request, status, error) {
+            res = $.parseJSON(request.responseText);
+            field = form.find('[name=' + res.param + ']');
+            if (field.length == 1) {
+                errorProvider.SetError(field, res.message);
+            }
+        }
+    });
+}
+
+function postModifyNotice(noticeId, form, errorProvider) {
+    if (!validateNoticeForm(
+        errorProvider,
+        form.find('input[name=title]'),
+        form.find('input[name="accounts[]"]#students'),
+        form.find('input[name="accounts[]"]#parents'),
+        form.find('input[name="accounts[]"]#teachers'),
+        form.find('input[name=periodBegin]'),
+        form.find('input[name=periodEnd]'),
+        form.find('textarea[name=content]')
+    )) {
+        return;
+    }
+
+    $.ajax({
+        dataType: "json",
+        type: "post",
+        url: '/ogloszenia/zarzadzaj/modyfikuj/' + noticeId,
+        data: form.serialize(),
+        success: function() {
+            box = show_message('information', 'Zapisano ogłoszenie', 'Ogłoszenie zostało pomyślnie zapisane.', ['ok'], true);
+            box.find('.warning-close,input[type=button][value=OK]').click(function(){
+                goBackOrToNoticeboardMainPage();
+                return true;
+            });
+        },
+        error: function(request, status, error) {
+            res = $.parseJSON(request.responseText);
+            field = form.find('[name=' + res.param + ']');
+            if (field.length == 1) {
+                errorProvider.SetError(field, res.message);
+            }
+        }
+    });
+}
+
+function validateNoticeForm(
+    errorProvider,
+    titleField,
+    accountStudentsField,
+    accountParentsField,
+    accountTeachersField,
+    periodBeginField,
+    periodEndField,
+    contentField
+) {
+    var validated = true;
+    errorProvider.Clear();
+    if (titleField.val().length < 1) {
+        errorProvider.SetError(titleField, 'Temat nie może być pusty.');
+        validated = false;
+    }
+
+    if (titleField.val().length > 100) {
+        errorProvider.SetError(titleField, 'Temat nie może być dłuższy niż 100 znaków.');
+        validated = false;
+    }
+
+    if (
+        !accountStudentsField.is(":checked")
+        && !accountParentsField.is(":checked")
+        && !accountTeachersField.is(":checked")
+    ) {
+        errorProvider.SetError($("label[for='" + accountStudentsField.attr('id') + "']"), 'Musisz wybrać przynajmniej jeden typ konta.');
+        errorProvider.SetError($("label[for='" + accountParentsField.attr('id') + "']"), 'Musisz wybrać przynajmniej jeden typ konta.');
+        errorProvider.SetError($("label[for='" + accountTeachersField.attr('id') + "']"), 'Musisz wybrać przynajmniej jeden typ konta.');
+        validated = false;
+    }
+
+    if (periodBeginField.val().length < 1) {
+        errorProvider.SetError(periodBeginField, 'Data publikacji nie może być pusta.');
+        validated = false;
+    } else if (!isValidDate(periodBeginField.val())) {
+        errorProvider.SetError(periodBeginField, 'Data publikacji nie jest poprawna.');
+        validated = false;
+    }
+
+
+
+    if (periodEndField.val().length < 1) {
+        errorProvider.SetError(periodEndField, 'Data wygaśnięcia nie może być pusta.');
+        validated = false;
+    } else if (!isValidDate(periodEndField.val())) {
+        errorProvider.SetError(periodEndField, 'Data wygaśnięcia nie jest poprawna.');
+        validated = false;
+    }
+
+    if (new Date(periodBeginField.val()).getTime() > new Date(periodEndField.val()).getTime()) {
+        errorProvider.SetError(periodEndField, 'Data wygaśnięcia musi być równa bądź większa niż data publikacji.');
+        validated = false;
+    }
+
+    if (contentField.val().length < 1) {
+        errorProvider.SetError(contentField, 'Treść nie może być pusta.');
+        validated = false;
+    }
+
+    if (contentField.val().length > 65535) {
+        errorProvider.SetError(contentField, 'Treść jest zbyt długa.');
+        validated = false;
+    }
+
+    return validated;
+}
+
+function isValidDate(dateString) {
+    var regEx = /^\d{4}-\d{2}-\d{2}$/;
+    return dateString.match(regEx) != null;
+}
+
+/**
+ * Function used to redirect user after successfully action.
+ *
+ * Function redirect user to previous page (referrer) if user come from noticeboard,
+ * or to noticeboard main page.
+ * @access public
+ * @return void
+ */
+function goBackOrToNoticeboardMainPage() {
+    referrer = document.referrer;
+    noticeboardUrl = window.location.origin + '/ogloszenia';
+    if (referrer.substring(0, noticeboardUrl.length) == noticeboardUrl) {
+        window.location.href = referrer;
+        return;
+    }
+
+    window.location.href = noticeboardUrl;
+}
