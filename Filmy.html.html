@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Filmy 😈 – Panel</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+/* ------------------- GLOBAL ------------------- */
+
+:root {
+    --bg1: #131313;
+    --bg2: #1f1f1f;
+    --text: #ffffff;
+    --card: rgba(255,255,255,0.12);
+    --card-hover: rgba(255,255,255,0.25);
+    --neon: #6d00ff;
+}
+
+.light {
+    --bg1: #f2f2f2;
+    --bg2: #ffffff;
+    --text: #000;
+    --card: rgba(0,0,0,0.08);
+    --card-hover: rgba(0,0,0,0.18);
+    --neon: #ff00c8;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(135deg, var(--bg1), var(--bg2));
+    font-family: Arial, sans-serif;
+    color: var(--text);
+    transition: .3s;
+}
+
+/* ------------------- HEADER ------------------- */
+
+header {
+    padding: 25px;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 0 0 15px var(--neon);
+}
+
+/* ------------------- BUTTON DARK/LIGHT ------------------- */
+
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 18px;
+    background: var(--card);
+    border: 2px solid var(--neon);
+    border-radius: 12px;
+    cursor: pointer;
+    color: var(--text);
+    backdrop-filter: blur(4px);
+    transition: .3s;
+}
+
+.toggle-btn:hover {
+    background: var(--card-hover);
+}
+
+/* ------------------- MENU BOCZNE ------------------- */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    width: 260px;
+    height: 100%;
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(7px);
+    border-right: 2px solid var(--neon);
+    padding: 30px;
+    transition: .3s;
+}
+
+.sidebar h2 {
+    font-size: 26px;
+    margin-top: 0;
+}
+
+.sidebar a {
+    display: block;
+    margin: 12px 0;
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--text);
+    transition: .2s;
+}
+
+.sidebar a:hover {
+    color: var(--neon);
+    transform: translateX(5px);
+}
+
+.menu-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--text);
+}
+
+/* ------------------- KAFELKI ------------------- */
+
+.kafelki {
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.kafelek {
+    width: 160px;
+    height: 160px;
+    background: var(--card);
+    border-radius: 20px;
+    border: 2px solid var(--neon);
+    backdrop-filter: blur(6px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .25s;
+    box-shadow: 0 0 15px var(--neon);
+}
+
+.kafelek:hover {
+    transform: scale(1.1) rotate(1deg);
+    background: var(--card-hover);
+    box-shadow: 0 0 25px var(--neon);
+}
+
+.kafelek .icon {
+    font-size: 50px;
+}
+
+.kafelek .text {
+    font-size: 18px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+/* ------------------- GALERIA ------------------- */
+
+.galeria {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.galeria h2 {
+    text-shadow: 0 0 10px var(--neon);
+}
+
+.thumbs {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.thumb {
+    width: 200px;
+    height: 120px;
+    background: var(--card);
+    border-radius: 12px;
+    border: 2px solid var(--neon);
+    cursor: pointer;
+    transition: .25s;
+    box-shadow: 0 0 15px var(--neon);
+}
+
+.thumb:hover {
+    transform: scale(1.08);
+    background: var(--card-hover);
+}
+
+/* ------------------- FOOTER ------------------- */
+
+footer {
+    margin-top: 50px;
+    padding: 15px;
+    text-align: center;
+    opacity: 0.7;
+}
+
+</style>
+</head>
+<body>
+
+<!-- MENU BUTTON -->
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<!-- TRYB JASNY/CIEMNY -->
+<div class="toggle-btn" onclick="toggleTheme()">🌗 Tryb</div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+    <h2>Menu</h2>
+    <a href="fagata.html">🎬 Fagata</a>
+    <a href="inne.html">📁 Inne</a>
+    <a href="#">⚙️ Ustawienia</a>
+</div>
+
+<header>Filmy 😈</header>
+
+<!-- KAFELKI -->
+<div class="kafelki">
+
+    <div class="kafelek" onclick="location.href='fagata.html'">
+        <div class="icon">🎬</div>
+        <div class="text">Fagata</div>
+    </div>
+
+    <div class="kafelek" onclick="location.href='inne.html'">
+        <div class="icon">📁</div>
+        <div class="text">Inne</div>
+    </div>
+
+    <div class="kafelek">
+        <div class="icon">⚙️</div>
+        <div class="text">Ustawienia</div>
+    </div>
+
+</div>
+
+<!-- GALERIA -->
+<div class="galeria">
+    <h2>🎥 Mini Galeria</h2>
+
+    <div class="thumbs">
+        <div class="thumb" onclick="location.href='fagata.html'"></div>
+        <div class="thumb" onclick="location.href='inne.html'"></div>
+        <div class="thumb"></div>
+    </div>
+</div>
+
+<footer>© Twoja Strona</footer>
+
+<script>
+/* MENU */
+function toggleMenu() {
+    let bar = document.getElementById("sidebar");
+    bar.style.left = bar.style.left === "0px" ? "-260px" : "0px";
+}
+
+/* TRYB LIGHT / DARK */
+function toggleTheme() {
+    document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
