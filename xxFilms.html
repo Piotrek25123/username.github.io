@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Porno Flix – Netflix Style</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body {
+        margin: 0;
+        background: #141414;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #fff;
+    }
+
+    /* NAVBAR */
+    .nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 70px;
+        background: rgba(0,0,0,0.85);
+        display: flex;
+        align-items: center;
+        padding: 0 40px;
+        z-index: 1000;
+    }
+    .logo {
+        font-size: 32px;
+        color: #e50914;
+        font-weight: 900;
+        letter-spacing: 2px;
+    }
+
+    /* HERO */
+    .hero {
+        margin-top: 70px;
+        height: 70vh;
+        background: url("https://images.genius.com/4261a39be4b451db207d696dc1ce2be3.1000x1000x1.png") center/cover;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 60px;
+        box-shadow: inset 0 0 300px rgba(0,0,0,0.9);
+    }
+    .hero h1 {
+        font-size: 60px;
+        margin: 0;
+        font-weight: 900;
+        text-shadow: 0 0 40px black;
+    }
+    .hero p {
+        font-size: 20px;
+        max-width: 500px;
+        opacity: 0.8;
+    }
+
+    /* BUTTONS */
+    .btns {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px;
+    }
+    .btn {
+        padding: 12px 25px;
+        font-size: 18px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: bold;
+    }
+    .play {
+        background: #fff;
+        color: #000;
+    }
+    .info {
+        background: rgba(255,255,255,0.3);
+        color: white;
+    }
+
+    /* ROWS */
+    .row {
+        margin: 30px 20px;
+    }
+    .row h2 {
+        margin-left: 10px;
+        font-size: 24px;
+        font-weight: 700;
+    }
+
+    .movies {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .movie {
+        min-width: 230px;
+        height: 130px;
+        border-radius: 4px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        transition: .25s;
+    }
+    .movie:hover {
+        transform: scale(1.25);
+        z-index: 5;
+    }
+    .movie img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* POPUP PLAYER */
+    .player-bg {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        z-index: 2000;
+    }
+    .player-box {
+        width: 90%;
+        max-width: 900px;
+        background: #000;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+    video {
+        width: 100%;
+    }
+    .close {
+        position: absolute;
+        top: 25px;
+        right: 45px;
+        font-size: 50px;
+        cursor: pointer;
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+
+<div class="nav">
+    <div class="logo">Porno FLIX</div>
+</div>
+
+<div class="hero">
+    <h1>Hit Miesiąca</h1>
+    <p>Najostrzejsze i najpopularniejsze materiały, polecane specjalnie dla Ciebie.</p>
+    <div class="btns">
+        <button class="btn play">▶ Odtwórz</button>
+        <button class="btn info">ℹ️ Więcej informacji</button>
+    </div>
+</div>
+
+<!-- ROW 1 -->
+<div class="row">
+    <h2>🔥 Polecane</h2>
+    <div class="movies">
+        <div class="movie" data-src="https://www.dropbox.com/scl/fi/3qa3grzwhjwzroj78ku6m/Gejostwo-Fagata-Czesc-2.mp4?rlkey=y8yes6tdm4q1mogubi29fabun&st=t9kbcjlx&raw=1">
+            <img src="https://yt3.googleusercontent.com/Y40ao1qlvr4-JzTzWaTQ8ajeURoplcWXQCLadoJsSl1cj7PwJ5idwz80F3MZ6utI3IJxbalpXas=s900-c-k-c0x00ffffff-no-rj">
+        </div>
+        <div class="movie" data-src="https://www.dropbox.com/scl/fi/3qa3grzwhjwzroj78ku6m/Gejostwo-Fagata-Czesc-2.mp4?rlkey=y8yes6tdm4q1mogubi29fabun&st=s5yftre0&raw=1">
+            <img src="https://preview.redd.it/0z764irqci9f1.jpg?width=640&crop=smart&auto=webp&s=ee0f08659db0dff595624c7fa68390e0fbf9f422">
+        </div>
+        <div class="movie" data-src="">
+            <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format">
+        </div>
+    </div>
+</div>
+
+<!-- ROW 2 -->
+<div class="row">
+    <h2>🎬 Kolekcja Porno</h2>
+    <div class="movies">
+        <div class="movie" data-src="">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Elephants_Dream_s1_proog.jpg/640px-Elephants_Dream_s1_proog.jpg">
+        </div>
+        <div class="movie" data-src="">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sintel_poster.jpg/640px-Sintel_poster.jpg">
+        </div>
+        <div class="movie" data-src="">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
+        </div>
+    </div>
+</div>
+
+<!-- PLAYER POPUP -->
+<div class="player-bg" id="playerBg">
+    <span class="close" id="closeBtn">&times;</span>
+    <div class="player-box">
+        <video id="videoPlayer" controls></video>
+    </div>
+</div>
+
+<script>
+    const movies = document.querySelectorAll('.movie');
+    const playerBg = document.getElementById('playerBg');
+    const player = document.getElementById('videoPlayer');
+    const closeBtn = document.getElementById('closeBtn');
+
+    movies.forEach(movie => {
+        movie.addEventListener('click', () => {
+            const src = movie.dataset.src;
+            player.src = src;
+            playerBg.style.display = 'flex';
+            player.play();
+        });
+    });
+
+    closeBtn.onclick = () => {
+        player.pause();
+        playerBg.style.display = 'none';
+    };
+</script>
+
+</body>
+</html>
