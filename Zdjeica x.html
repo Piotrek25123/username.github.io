@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zdjecia Premium 😈</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;font-family:'Playfair Display',serif;background:#0b0b0b;color:#f2f2f2;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+
+/* NAV */
+nav{
+position:fixed;top:0;width:100%;padding:20px 40px;z-index:1000;
+background:rgba(0,0,0,.7);display:flex;align-items:center;
+}
+nav .logo{font-size:28px;font-weight:700;letter-spacing:4px;}
+
+/* ================= CATEGORY SLIDER ================= */
+.category-slider-wrapper{
+position:relative;
+padding:20px 0;
+}
+.category-slider{
+display:flex;
+overflow-x:auto;
+scroll-behavior:smooth;
+gap:20px;
+padding:20px;
+scroll-snap-type: x mandatory;
+}
+.category-slider::-webkit-scrollbar{display:none;}
+.category{
+flex:0 0 300px;
+height:60vh;
+position:relative;cursor:pointer;
+border-radius:8px;
+box-shadow:0 0 30px rgba(0,0,0,.5);
+transition:transform .4s,filter .4s;
+scroll-snap-align: start;
+}
+.category img{
+width:100%;height:100%;object-fit:cover;transition:transform .4s,filter .4s;filter:brightness(60%);
+border-radius:8px;
+}
+.category:hover img{filter:brightness(100%) scale(1.05);}
+.category span{
+position:absolute;bottom:20px;left:20px;font-size:28px;font-weight:700;text-shadow:0 0 10px rgba(0,0,0,.7);
+}
+
+/* NAV ARROWS */
+.slider-btn{
+position:absolute;top:50%;transform:translateY(-50%);
+background:rgba(0,0,0,.4);color:white;font-size:36px;padding:15px;cursor:pointer;border-radius:5px;
+z-index:1000;transition:.3s;
+}
+.slider-btn:hover{background:rgba(0,0,0,.7);}
+.prev-slider{left:10px;}
+.next-slider{right:10px;}
+
+/* LIGHTBOX */
+.gallery{
+position:fixed;inset:0;background:rgba(0,0,0,.95);
+display:none;align-items:center;justify-content:center;z-index:2000;
+overflow:hidden;
+}
+.gallery:target{display:flex;}
+.gallery img{
+max-width:90%;max-height:90%;
+object-fit:contain;
+border-radius:4px;
+box-shadow:0 0 50px rgba(0,0,0,.7);
+transition:transform .3s ease;
+}
+.close{position:absolute;top:30px;right:40px;color:white;font-size:32px;font-weight:700;cursor:pointer;}
+
+/* SLIDES CONTAINER */
+.slide-container{
+position:absolute;top:0;left:0;width:100%;height:100%;
+display:flex;align-items:center;justify-content:center;
+transition:transform .5s ease;
+}
+.slide-container img{
+width:100%;height:100%;object-fit:contain;
+}
+
+/* NAV BUTTONS */
+.nav-btn{
+position:absolute;top:50%;transform:translateY(-50%);
+color:white;font-size:48px;text-decoration:none;padding:15px 25px;background:rgba(0,0,0,.4);
+transition:.3s;border-radius:5px;
+cursor:pointer;
+}
+.nav-btn:hover{background:rgba(0,0,0,.7);}
+.prev{left:20px;}
+.next{right:20px;}
+
+/* WATERMARK */
+.watermark{position:absolute;top:30px;right:40px;font-size:14px;opacity:.4;font-weight:700;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.category{flex:0 0 200px;height:50vh;}
+.category span{font-size:20px;}
+.slider-btn{font-size:28px;padding:10px;}
+.nav-btn{font-size:36px;padding:10px 15px;}
+}
+</style>
+</head>
+<body>
+
+<nav><div class="logo">Zdjecia 😈</div></nav>
+
+<!-- ================= CATEGORY SLIDER ================= -->
+<div class="category-slider-wrapper">
+<div class="slider-btn prev-slider" onclick="scrollSlider(-1)">‹</div>
+<div class="slider-btn next-slider" onclick="scrollSlider(1)">›</div>
+
+<div id="categorySlider" class="category-slider">
+<a href="#FAGATA" class="category"><img src=""><span>FAGATA</span></a>
+<a href="#MASZA" class="category"><img src="https://www.dropbox.com/scl/fi/gt2b2nxwls9fsikraevh0/image-7.png?rlkey=01w5t40cjhxtxu8ocu5lphkku&st=flka06qe&raw=1"><span>MASZA</span></a>
+<a href="#STREET" class="category"><img src=""><span>STREET</span></a>
+<a href="#SOPHIE-RAIN" class="category"><img src=""><span>SOPHIE-RAIN</span></a>
+<a href="#SANDRA-ZALECKA" class="category"><img src=""><span>SANDRA-ZALECKA</span></a>
+<a href="#NIKITA" class="category"><img src=""><span>NIKITA</span></a>
+<a href="#YUKI" class="category"><img src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1"><span>YUKI</span></a>
+<a href="#SHEEYA" class="category"><img src=""><span>SHEEYA</span></a>
+<a href="#CRAZY-OLIWKA" class="category"><img src=""><span>CRAZY-OLIWKA</span></a>
+<a href="#LEASY" class="category"><img src=""><span>LEASY</span></a>
+<a href="#MRHONEY" class="category"><img src=""><span>MRHONEY</span></a>
+<a href="#LIL-MASTI" class="category"><img src=""><span>LIL-MASTI</span></a>
+<a href="#QUEEN-OF-THE-BLACK" class="category"><img src=""><span>QUEEN-OF-THE-BLACK</span></a>
+<a href="#JULKA-GUZIK" class="category"><img src=""><span>JULKA-GUZIK</span></a>
+<a href="#SONGHELI" class="category"><img src=""><span>SONGHELI</span></a>
+<a href="#JEZIOROWSKA" class="category"><img src=""><span>JEZIOROWSKA</span></a>
+<a href="#MADZIA-LOSKOT" class="category"><img src=""><span>MADZIA-LOSKOT</span></a>
+<a href="#BUNNY-MARTHY" class="category"><img src=""><span>BUNNY-MARTHY</span></a>
+</div>
+</div>
+
+<!-- ================= GALLERIES (puste pola gotowe do wstawienia zdjęć) ================= -->
+<div id="FAGATA" class="gallery">
+<a href="#" class="close">✕</a>
+<div class="slide-container" id="slides-fagata">
+<img src="">
+<img src="">
+<div class="watermark">© YOUR NAME</div>
+<a class="nav-btn prev" onclick="prevSlide('slides-fagata')">‹</a>
+<a class="nav-btn next" onclick="nextSlide('slides-fagata')">›</a>
+</div>
+</div>
+
+<div id="MASZA" class="gallery">
+<a href="#" class="close">✕</a>
+<div class="slide-container" id="slides-masza">
+<img src="https://www.dropbox.com/scl/fi/gt2b2nxwls9fsikraevh0/image-7.png?rlkey=01w5t40cjhxtxu8ocu5lphkku&st=flka06qe&raw=1">
+<div class="watermark">© YOUR NAME</div>
+<a class="nav-btn prev" onclick="prevSlide('slides-masza')">‹</a>
+<a class="nav-btn next" onclick="nextSlide('slides-masza')">›</a>
+</div>
+</div>
+
+<div id="YUKI" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-yuki">
+    <img src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/5g5z7ph5s7zur0e5qzkz8/30525775-img-0498.jpg?rlkey=pf3aw3vq53u343rvyv73hisqp&st=9nbshsjo&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/f3jrhb4jcw8uv1cnhv42y/RDT_20251215_201604625290735101931840.jpg?rlkey=9t0ttl776rok0p9ddssbik69m&st=1t33cmky&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/rvegvm1pcg9wpdutzgsfw/RDT_20251215_1955324568695244664937236.jpg?rlkey=ru0e6n1x81q8t0k807s5jvi38&st=djs9ytsj&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/2rn23qtasv1v3oufkxc7l/RDT_20251215_1958175318623513793025404.jpg?rlkey=mg2sl7ld3mhko01dqn2i8kc3a&st=cgi4cuju&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/ta9pux3d7ccs7v78usee8/RDT_20251215_1958411809498948724489751.jpg?rlkey=1dvm3e229qouordx3mazytl9y&st=odn5og00&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/ciqiqq6nvir49t5m6y2x2/RDT_20251215_1958477608323567252578183.jpg?rlkey=5klrqrok32z6yjww5wq6pd8j4&st=jrx5a60y&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/eo8z0l2n68pcy0yg2188k/RDT_20251215_2016268543256624796116008.jpg?rlkey=szbbc0lmw6cd8kkrcfcv8xmg2&st=qkkp53sw&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/admxb3imegdflcmu615km/RDT_20251216_1507034561211516722233251.jpg?rlkey=a7vle83nn17yke9f5ax5rnk1d&st=6fcx0zqa&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/rga0dxcjaw0qvx4kty5r3/RDT_20251216_1508296217845496830269251.jpg?rlkey=ftto2qwlofrq0hfjabu77m1dv&st=od0vl85l&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/yehvpujjnhzymoirfa628/yukiszwaczka_0084.jpg?rlkey=o1kbc9x14a51qnyqgcnw475q2&st=roitc3lq&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/4w95upyxf7u7u0v3w3dpk/yukiszwaczka_0089.jpg?rlkey=qxks9n2ny0xoiyn5xrsrd7qqu&st=97288flj&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/rublf1ghu3se54kk29m3e/yukiszwaczka-1-1.webp?rlkey=ahudrxjaxsl3cvcmtqrqb3dor&st=lg3h4quq&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=oif1dy9w&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/672xyi7ka6qmv56s8scu6/yukiszwaczka-1-3.webp?rlkey=tc5nao8h4h9x3dzuj0jeixv0o&st=1y0q1igo&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/87cjcskifg7ks0xlfqvo3/yukiszwaczka-1.webp?rlkey=shkttjewry6dtg6s4jt3y0df2&st=ptrd96hm&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/z2fqqto7osf0rnhfisihp/yukiszwaczka-onlyfans-6i0oq-2.jpg?rlkey=2f36509wk7urjlwy1ovdvwbcs&st=pxdbmykt&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/x66n4nl7pdwwr2otvxkq4/yukiszwaczka-onlyfans-rjdn9-2.jpg?rlkey=d62w1si9y9vbspatsdrtwuray&st=jm5ydbvg&raw=1">
+    <img src="https://www.dropbox.com/scl/fi/o5jtnukfqs1rhypucisun/yukiszwaczka-onlyfans-zffg1-6.jpg?rlkey=yoi8yv2fpsxzpkptcbywpd3ry&st=sh2cjle4&raw=1">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-yuki')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-yuki')">›</a>
+  </div>
+</div>
+
+<!-- SANDRA-ZALECKA -->
+<div id="SANDRA-ZALECKA" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-sandra">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-sandra')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-sandra')">›</a>
+  </div>
+</div>
+
+<!-- NIKITA -->
+<div id="NIKITA" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-nikita">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-nikita')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-nikita')">›</a>
+  </div>
+</div>
+
+<!-- SHEEYA -->
+<div id="SHEEYA" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-sheeya">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-sheeya')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-sheeya')">›</a>
+  </div>
+</div>
+
+<!-- CRAZY-OLIWKA -->
+<div id="CRAZY-OLIWKA" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-crazy">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-crazy')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-crazy')">›</a>
+  </div>
+</div>
+
+<!-- LEASY -->
+<div id="LEASY" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-leasy">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-leasy')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-leasy')">›</a>
+  </div>
+</div>
+
+<!-- MRHONEY -->
+<div id="MRHONEY" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-mrhoney">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-mrhoney')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-mrhoney')">›</a>
+  </div>
+</div>
+
+<!-- LIL-MASTI -->
+<div id="LIL-MASTI" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-lilmasti">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-lilmasti')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-lilmasti')">›</a>
+  </div>
+</div>
+
+<!-- QUEEN-OF-THE-BLACK -->
+<div id="QUEEN-OF-THE-BLACK" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-queen">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-queen')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-queen')">›</a>
+  </div>
+</div>
+
+<!-- JULKA-GUZIK -->
+<div id="JULKA-GUZIK" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-julka">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-julka')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-julka')">›</a>
+  </div>
+</div>
+
+<!-- SONGHELI -->
+<div id="SONGHELI" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-songheli">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-songheli')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-songheli')">›</a>
+  </div>
+</div>
+
+<!-- JEZIOROWSKA -->
+<div id="JEZIOROWSKA" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-jeziorowska">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-jeziorowska')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-jeziorowska')">›</a>
+  </div>
+</div>
+
+<!-- MADZIA-LOSKOT -->
+<div id="MADZIA-LOSKOT" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-madzia">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-madzia')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-madzia')">›</a>
+  </div>
+</div>
+
+<!-- BUNNY-MARTHY -->
+<div id="BUNNY-MARTHY" class="gallery">
+  <a href="#" class="close">✕</a>
+  <div class="slide-container" id="slides-bunny">
+    <img src="">
+    <img src="">
+    <div class="watermark">© YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-bunny')">‹</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-bunny')">›</a>
+  </div>
+
+
+<div id="STREET" class="gallery">
+<a href="#" class="close">✕</a>
+<div class="slide-container" id="slides-street">
+<img src="">
+<div class="watermark">© YOUR NAME</div>
+<a class="nav-btn prev" onclick="prevSlide('slides-street')">‹</a>
+<a class="nav-btn next" onclick="nextSlide('slides-street')">›</a>
+</div>
+</div>
+
+<!-- Analogicznie galerie dla pozostałych kategorii -->
+<div id="SOPHIE-RAIN" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-sophie"><img src=""><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-sophie')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-sophie')">›</a></div></div>
+<div id="SANDRA-ZALECKA" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-sandra"><img src=""><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-sandra')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-sandra')">›</a></div></div>
+<div id="NIKITA" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-nikita"><img src=""><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-nikita')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-nikita')">›</a></div></div>
+<div id="YUKI" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-yuki"><img src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1"><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-yuki')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-yuki')">›</a></div></div>
+
+<!-- Dodaj resztę analogicznie z pustymi img src -->
+
+<script>
+// ================= SLIDER KATEGORII =================
+function scrollSlider(direction){
+  const slider = document.getElementById('categorySlider');
+  const scrollAmount = 320; // przesunięcie w px
+  slider.scrollBy({left: scrollAmount*direction, behavior:'smooth'});
+}
+
+// ================= GALERIE =================
+function nextSlide(id){
+  const container=document.getElementById(id);
+  container.appendChild(container.querySelector('img:first-child'));
+}
+function prevSlide(id){
+  const container=document.getElementById(id);
+  container.insertBefore(container.querySelector('img:last-child'), container.firstChild);
+}
+</script>
+
+</body>
+</html>
