@@ -1,275 +1,159 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<title>Porno Flix – Netflix Style</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<title>PoloFlix</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <style>
-    body {
-        margin: 0;
-        background: #141414;
-        font-family: Arial, Helvetica, sans-serif;
-        color: #fff;
-    }
+*{box-sizing:border-box}
+body{margin:0;background:#141414;font-family:Arial,Helvetica,sans-serif;color:#fff}
 
-    /* NAVBAR */
-    .nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 70px;
-        background: rgba(0,0,0,0.85);
-        display: flex;
-        align-items: center;
-        padding: 0 40px;
-        z-index: 1000;
-    }
-    .logo {
-        font-size: 32px;
-        color: #e50914;
-        font-weight: 900;
-        letter-spacing: 2px;
-    }
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;height:60px;background:rgba(0,0,0,.92);display:flex;align-items:center;padding:0 20px;z-index:1000}
+.logo{font-size:26px;font-weight:900;color:#e50914}
+#search{margin-left:auto;background:#222;border:none;border-radius:4px;padding:6px 10px;color:#fff;font-size:14px;width:160px}
+.profile{margin-left:12px;width:34px;height:34px;border-radius:4px;background:#555;display:flex;align-items:center;justify-content:center;font-weight:900}
 
-    /* HERO */
-    .hero {
-        margin-top: 70px;
-        height: 70vh;
-        background: url("https://images.genius.com/4261a39be4b451db207d696dc1ce2be3.1000x1000x1.png") center/cover;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 60px;
-        box-shadow: inset 0 0 300px rgba(0,0,0,0.9);
-    }
-    .hero h1 {
-        font-size: 60px;
-        margin: 0;
-        font-weight: 900;
-        text-shadow: 0 0 40px black;
-    }
-    .hero p {
-        font-size: 20px;
-        max-width: 500px;
-        opacity: 0.8;
-    }
+/* TABS */
+.tabs{margin-top:60px;display:flex;gap:20px;padding:15px 20px;overflow-x:auto;position:sticky;top:60px;background:#141414;z-index:900}
+.tab{cursor:pointer;font-weight:700;opacity:.6;white-space:nowrap}
+.tab.active{opacity:1;border-bottom:3px solid #e50914;padding-bottom:6px}
 
-    /* BUTTONS */
-    .btns {
-        margin-top: 20px;
-        display: flex;
-        gap: 15px;
-    }
-    .btn {
-        padding: 12px 25px;
-        font-size: 18px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        font-weight: bold;
-    }
-    .play {
-        background: #fff;
-        color: #000;
-    }
-    .info {
-        background: rgba(255,255,255,0.3);
-        color: white;
-    }
+/* HERO */
+.hero{height:45vh;background:url('https://images.genius.com/4261a39be4b451db207d696dc1ce2be3.1000x1000x1.png') center/cover;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;box-shadow:inset 0 0 250px rgba(0,0,0,.9)}
+.hero h1{margin:0;font-size:32px;font-weight:900}
+.hero p{font-size:14px;opacity:.85;max-width:360px}
 
-    /* ROWS */
-    .row {
-        margin: 30px 20px;
-    }
-    .row h2 {
-        margin-left: 10px;
-        font-size: 24px;
-        font-weight: 700;
-    }
+/* SECTIONS */
+.section{display:none}
+.section.active{display:block}
+.row{margin:20px 10px}
+.row h2{font-size:18px;margin:0 0 10px 5px}
+.movies{display:flex;gap:10px;overflow-x:auto;padding-bottom:10px}
 
-    .movies {
-        display: flex;
-        overflow-x: auto;
-        gap: 10px;
-        padding: 10px;
-    }
+/* MOVIE CARD */
+.movie{position:relative;min-width:150px;height:90px;border-radius:4px;overflow:hidden;cursor:pointer;transition:.25s}
+.movie img{width:100%;height:100%;object-fit:cover;display:block}
+.movie:hover{transform:scale(1.15);z-index:5}
 
-    .movie {
-        min-width: 230px;
-        height: 130px;
-        border-radius: 4px;
-        overflow: hidden;
-        cursor: pointer;
-        position: relative;
-        transition: .25s;
-    }
-    .movie:hover {
-        transform: scale(1.25);
-        z-index: 5;
-    }
-    .movie img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+/* HOVER CARD */
+.hover{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(transparent,rgba(0,0,0,.9));padding:6px;font-size:12px;opacity:0;transition:.2s}
+.movie:hover .hover{opacity:1}
+.hover b{display:block;font-size:13px}
 
-    /* POPUP PLAYER */
-    .player-bg {
-        position: fixed;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        background: rgba(0,0,0,0.9);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        padding: 20px;
-        z-index: 2000;
-    }
-    .player-box {
-        width: 90%;
-        max-width: 900px;
-        background: #000;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-    video {
-        width: 100%;
-    }
-    .close {
-        position: absolute;
-        top: 25px;
-        right: 45px;
-        font-size: 50px;
-        cursor: pointer;
-        color: #fff;
-    }
+/* PLAYER */
+.player-bg{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;z-index:2000}
+.player-box{width:100%;background:#000}
+video{width:100%}
+.close{position:absolute;top:15px;right:20px;font-size:40px;cursor:pointer}
+
+/* 18+ */
+.age{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:3000;display:flex;align-items:center;justify-content:center;text-align:center}
+.age button{margin-top:20px;padding:12px 20px;font-size:16px;font-weight:700}
 </style>
 </head>
 <body>
 
+<!-- 18+ SCREEN -->
+<div class="age" id="age">
+  <div>
+    <h1>18+</h1>
+    <p>Treści tylko dla pełnoletnich</p>
+    <button onclick="acceptAge()">Mam 18 lat</button>
+  </div>
+</div>
+
 <div class="nav">
-    <div class="logo">Porno FLIX</div>
+  <div class="logo">POLOFLIX</div>
+  <input id="search" placeholder="Szukaj..." />
+  <div class="profile">U</div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" data-tab="t1">Fagata</div>
+  <div class="tab" data-tab="t2">Nowe</div>
+  <div class="tab" data-tab="t3">Top</div>
+  <div class="tab" data-tab="t4">Klasyki</div>
+  <div class="tab" data-tab="t5">Inne</div>
 </div>
 
 <div class="hero">
-    <h1>Hit Miesiąca</h1>
-    <p>Najostrzejsze i najpopularniejsze materiały, polecane specjalnie dla Ciebie.</p>
-    <div class="btns">
-        <button class="btn play">▶ Odtwórz</button>
-        <button class="btn info">ℹ️ Więcej informacji</button>
+  <h1>Hit miesiąca</h1>
+  <p>Netflix 1:1 po naszemu 🔥</p>
+</div>
+
+<!-- TAB 1 -->
+<div class="section active" id="t1">
+  <div class="row"><h2>Polecane</h2><div class="movies">
+    <div class="movie" data-src="https://www.dropbox.com/scl/fi/3qa3grzwhjwzroj78ku6m/Gejostwo-Fagata-Czesc-2.mp4?raw=1" data-trailer="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+      <img loading="lazy" src="https://www.dropbox.com/scl/fi/r9cutto5jnvxkg6v1ggct/Zrzut-ekranu-2025-12-10-155830.png?raw=1" />
+      <div class="hover"><b>Fagata</b>▶ Odtwórz</div>
     </div>
+  </div></div>
 </div>
 
-<!-- ROW 1 -->
-<div class="row">
-    <h2>🔥 Polecane</h2>
-    <div class="movies">
-        <div class="movie" data-src="https://www.dropbox.com/scl/fi/3qa3grzwhjwzroj78ku6m/Gejostwo-Fagata-Czesc-2.mp4?rlkey=y8yes6tdm4q1mogubi29fabun&st=t9kbcjlx&raw=1">
-            <img src="https://yt3.googleusercontent.com/Y40ao1qlvr4-JzTzWaTQ8ajeURoplcWXQCLadoJsSl1cj7PwJ5idwz80F3MZ6utI3IJxbalpXas=s900-c-k-c0x00ffffff-no-rj">
-        </div>
-        <div class="movie" data-src="https://www.dropbox.com/scl/fi/3qa3grzwhjwzroj78ku6m/Gejostwo-Fagata-Czesc-2.mp4?rlkey=y8yes6tdm4q1mogubi29fabun&st=bho40s43&raw=1">
-            <img src="https://preview.redd.it/0z764irqci9f1.jpg?width=640&crop=smart&auto=webp&s=ee0f08659db0dff595624c7fa68390e0fbf9f422">
-        </div>
-        <div class="movie" data-src="https://www.dropbox.com/scl/fi/h5k0vfffuqpihz2bfv349/gg-nsfwcenter.mp4?rlkey=ubmvlv6i2lswn59npkq1rqzrb&st=ljnf8k6s&raw=1">
-            <img src="https://www.dropbox.com/scl/fi/r9cutto5jnvxkg6v1ggct/Zrzut-ekranu-2025-12-10-155830.png?rlkey=cpljivsluzmo6pgvqgb6w7crp&st=27val4o7&dl=0">
-        </div>
-    </div>
-</div>
+<!-- TAB 2 -->
+<div class="section" id="t2"><div class="row"><h2>Nowe</h2><div class="movies">
+  <div class="movie" data-src="https://storage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4">
+    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sintel_poster.jpg/640px-Sintel_poster.jpg" />
+    <div class="hover"><b>Sintel</b></div>
+  </div>
+</div></div></div>
 
-<!-- ROW 2 -->
-<div class="row">
-    <h2>🎬 JULKA GUZIK /h2>
-    <div class="movies">
-        <div class="movie" data-src="https://www.dropbox.com/scl/fi/3qa3grzwhjwzroj78ku6m/Gejostwo-Fagata-Czesc-2.mp4?rlkey=y8yes6tdm4q1mogubi29fabun&st=t9kbcjlx&raw=1">
-            <img src="https://yt3.googleusercontent.com/Y40ao1qlvr4-JzTzWaTQ8ajeURoplcWXQCLadoJsSl1cj7PwJ5idwz80F3MZ6utI3IJxbalpXas=s900-c-k-c0x00ffffff-no-rj">
-        </div>
-        <div class="movie" data-src="https://www.dropbox.com/scl/fi/3qa3grzwhjwzroj78ku6m/Gejostwo-Fagata-Czesc-2.mp4?rlkey=y8yes6tdm4q1mogubi29fabun&st=bho40s43&raw=1">
-            <img src="https://preview.redd.it/0z764irqci9f1.jpg?width=640&crop=smart&auto=webp&s=ee0f08659db0dff595624c7fa68390e0fbf9f422">
-        </div>
-        <div class="movie" data-src="https://www.dropbox.com/scl/fi/h5k0vfffuqpihz2bfv349/gg-nsfwcenter.mp4?rlkey=ubmvlv6i2lswn59npkq1rqzrb&st=ljnf8k6s&raw=1">
-            <img src="https://www.dropbox.com/scl/fi/r9cutto5jnvxkg6v1ggct/Zrzut-ekranu-2025-12-10-155830.png?rlkey=cpljivsluzmo6pgvqgb6w7crp&st=27val4o7&dl=0">
-        </div>
-    </div>
-</div>
+<!-- TAB 3 -->
+<div class="section" id="t3"><div class="row"><h2>Top</h2><div class="movies">
+  <div class="movie" data-src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4">
+    <img loading="lazy" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Elephants_Dream_s1_proog.jpg/640px-Elephants_Dream_s1_proog.jpg" />
+    <div class="hover"><b>Elephants Dream</b></div>
+  </div>
+</div></div></div>
 
-<!-- ROW 3 -->
-<div class="row">
-    <h2>🎬 Wszytkie filmy</h2>
-    <div class="movies">
-        <div class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Elephants_Dream_s1_proog.jpg/640px-Elephants_Dream_s1_proog.jpg">
-        </div>
-        <div class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Sintel_poster.jpg/640px-Sintel_poster.jpg">
-        </div>
-        <div class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-        </div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
-    </div   class="movie" data-src="">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Tears_of_Steel_poster.jpg/640px-Tears_of_Steel_poster.jpg">
-</div>
+<!-- TAB 4 -->
+<div class="section" id="t4"><div class="row"><h2>Klasyki</h2><div class="movies">
+  <div class="movie" data-src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+    <img loading="lazy" src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=800" />
+    <div class="hover"><b>Flower</b></div>
+  </div>
+</div></div></div>
 
+<!-- TAB 5 -->
+<div class="section" id="t5"><div class="row"><h2>Inne</h2><div class="movies">
+  <div class="movie" data-src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4">
+    <img loading="lazy" src="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg" />
+    <div class="hover"><b>Joyrides</b></div>
+  </div>
+</div></div></div>
 
-<!-- PLAYER POPUP -->
+<!-- PLAYER -->
 <div class="player-bg" id="playerBg">
-    <span class="close" id="closeBtn">&times;</span>
-    <div class="player-box">
-        <video id="videoPlayer" controls></video>
-    </div>
+  <span class="close" id="closeBtn">&times;</span>
+  <div class="player-box"><video id="videoPlayer" controls playsinline></video></div>
 </div>
 
 <script>
-    const movies = document.querySelectorAll('.movie');
-    const playerBg = document.getElementById('playerBg');
-    const player = document.getElementById('videoPlayer');
-    const closeBtn = document.getElementById('closeBtn');
+/* 18+ */
+function acceptAge(){document.getElementById('age').style.display='none'}
 
-    movies.forEach(movie => {
-        movie.addEventListener('click', () => {
-            const src = movie.dataset.src;
-            player.src = src;
-            playerBg.style.display = 'flex';
-            player.play();
-        });
-    });
+/* TABS */
+const tabs=document.querySelectorAll('.tab');
+const sections=document.querySelectorAll('.section');
+tabs.forEach(t=>t.onclick=()=>{tabs.forEach(x=>x.classList.remove('active'));sections.forEach(s=>s.classList.remove('active'));t.classList.add('active');document.getElementById(t.dataset.tab).classList.add('active');window.scrollTo({top:0})});
 
-    closeBtn.onclick = () => {
-        player.pause();
-        playerBg.style.display = 'none';
-    };
+/* SEARCH */
+document.getElementById('search').oninput=e=>{const q=e.target.value.toLowerCase();document.querySelectorAll('.movie').forEach(m=>{m.style.display=m.innerText.toLowerCase().includes(q)?'':'none'})}
+
+/* PLAYER */
+const bg=document.getElementById('playerBg');
+const player=document.getElementById('videoPlayer');
+document.querySelectorAll('.movie').forEach(m=>{
+  m.onclick=()=>{player.src=m.dataset.src;bg.style.display='flex';player.play()}
+  let t;
+  m.onmouseenter=()=>{if(m.dataset.trailer){t=setTimeout(()=>{player.src=m.dataset.trailer;bg.style.display='flex';player.muted=true;player.play()},600)}}
+  m.onmouseleave=()=>{clearTimeout(t);player.pause();bg.style.display='none'}
+});
+
+closeBtn.onclick=()=>{player.pause();player.src='';bg.style.display='none'}
 </script>
 
 </body>
 </html>
-
-
