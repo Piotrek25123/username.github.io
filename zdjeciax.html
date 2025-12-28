@@ -1,13 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zdjecia Premium 😈</title>
+<title>Zdjecia Premium ??</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;font-family:'Playfair Display',serif;background:linear-gradient(135deg, #0b0b0b, #1a1a1a);color:#f2f2f2;overflow-x:hidden;}
+html,body{height:100%;font-family:'Playfair Display',serif;background:#0b0b0b;color:#f2f2f2;overflow-x:hidden;}
 a{text-decoration:none;color:inherit;}
 
 /* NAV */
@@ -16,15 +16,6 @@ position:fixed;top:0;width:100%;padding:20px 40px;z-index:1000;
 background:rgba(0,0,0,.7);display:flex;align-items:center;
 }
 nav .logo{font-size:28px;font-weight:700;letter-spacing:4px;}
-
-/* SEARCH */
-.search-container{
-padding:20px;text-align:center;
-}
-#searchInput{
-padding:10px;width:300px;max-width:90%;border:none;border-radius:5px;background:rgba(255,255,255,.1);color:white;font-size:16px;
-}
-#searchInput::placeholder{color:#ccc;}
 
 /* ================= CATEGORY SLIDER ================= */
 .category-slider-wrapper{
@@ -52,7 +43,6 @@ scroll-snap-align: start;
 .category img{
 width:100%;height:100%;object-fit:cover;transition:transform .4s,filter .4s;filter:brightness(60%);
 border-radius:8px;
-will-change: transform, filter;
 }
 .category:hover img{filter:brightness(100%) scale(1.05);}
 .category span{
@@ -74,36 +64,16 @@ z-index:1000;transition:.3s;
 position:fixed;inset:0;background:rgba(0,0,0,.95);
 display:none;align-items:center;justify-content:center;z-index:2000;
 overflow:hidden;
-animation: fadeIn 0.5s ease;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.9); }
-  to { opacity: 1; transform: scale(1); }
 }
 .gallery:target{display:flex;}
 .gallery img{
-max-width:95%;max-height:95%;
+max-width:90%;max-height:90%;
 object-fit:contain;
 border-radius:4px;
 box-shadow:0 0 50px rgba(0,0,0,.7);
 transition:transform .3s ease;
-cursor:zoom-in;
-will-change: transform;
 }
-.gallery img:hover{transform:scale(1.05);}
-.gallery img.zoomed { transform: scale(2); cursor: zoom-out; }
 .close{position:absolute;top:30px;right:40px;color:white;font-size:32px;font-weight:700;cursor:pointer;}
-.home-btn{position:absolute;top:30px;left:40px;color:white;font-size:24px;text-decoration:none;background:rgba(0,0,0,.4);padding:10px;border-radius:5px;transition:.3s;}
-.home-btn:hover{background:rgba(0,0,0,.7);}
-.gallery-title{position:absolute;top:30px;left:50%;transform:translateX(-50%);color:white;font-size:24px;font-weight:700;text-shadow:0 0 10px rgba(0,0,0,.7);}
-.fullscreen-btn{position:absolute;top:30px;right:100px;color:white;font-size:24px;background:rgba(0,0,0,.4);border:none;padding:10px;border-radius:5px;cursor:pointer;transition:.3s;}
-.fullscreen-btn:hover{background:rgba(0,0,0,.7);}
-.progress-bar{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);width:200px;height:4px;background:rgba(255,255,255,.3);border-radius:2px;display:none;}
-.progress-bar.active{display:block;}
-.progress-bar::after{content:'';display:block;width:0;height:100%;background:#f2f2f2;border-radius:2px;animation: progress 3s linear infinite;}
-@keyframes progress { to { width: 100%; } }
-.random-btn{position:absolute;bottom:30px;left:20px;color:white;font-size:24px;background:rgba(0,0,0,.4);border:none;padding:10px;border-radius:5px;cursor:pointer;transition:.3s;}
-.random-btn:hover{background:rgba(0,0,0,.7);}
 
 /* SLIDES CONTAINER */
 .slide-container{
@@ -114,26 +84,16 @@ transition:transform .5s ease;
 .slide-container img{
 width:100%;height:100%;object-fit:contain;
 }
-.image-wrapper{position:relative;display:inline-block;width:100%;height:100%;}
-.image-close{position:absolute;top:10px;right:10px;color:white;font-size:24px;background:rgba(0,0,0,.6);border:none;padding:5px;border-radius:50%;cursor:pointer;transition:.3s;width:30px;height:30px;display:flex;align-items:center;justify-content:center;}
-.image-close:hover{background:rgba(0,0,0,.8);}
 
 /* NAV BUTTONS */
 .nav-btn{
 position:absolute;top:50%;transform:translateY(-50%);
 color:white;font-size:48px;text-decoration:none;padding:15px 25px;background:rgba(0,0,0,.4);
-transition:.3s;border-radius:5px;
+border-radius:5px;
 cursor:pointer;
 }
-.nav-btn:hover{background:rgba(0,0,0,.7);}
 .prev{left:20px;}
 .next{right:20px;}
-
-.category img.loading,
-.gallery img.loading {
-  opacity: 0.5;
-  background: center / 40px no-repeat url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"><circle cx="20" cy="20" r="18" fill="none" stroke="%23fff" stroke-width="2" stroke-dasharray="10 5"><animateTransform attributeName="transform" attributeType="XML" type="rotate" from="0 20 20" to="360 20 20" dur="1s" repeatCount="indefinite"/></circle></svg>');
-}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -146,589 +106,393 @@ cursor:pointer;
 </head>
 <body>
 
-<nav><div class="logo">Zdjecia 😈</div></nav>
-
-<!-- SEARCH BAR -->
-<div class="search-container">
-<input type="text" id="searchInput" placeholder="Szukaj kategorii..." onkeyup="filterCategories()">
-</div>
+<nav><div class="logo">Zdjecia ??</div></nav>
 
 <!-- ================= CATEGORY SLIDER ================= -->
 <div class="category-slider-wrapper">
-<div class="slider-btn prev-slider" onclick="scrollSlider(-1)">‹</div>
-<div class="slider-btn next-slider" onclick="scrollSlider(1)">›</div>
+<div class="slider-btn prev-slider" onclick="scrollSlider(-1)">?</div>
+<div class="slider-btn next-slider" onclick="scrollSlider(1)">?</div>
 
 <div id="categorySlider" class="category-slider">
-<a href="#FAGATA" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>FAGATA</span></a>
-<a href="#MASZA" class="category"><img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/gt2b2nxwls9fsikraevh0/image-7.png?rlkey=01w5t40cjhxtxu8ocu5lphkku&st=flka06qe&raw=1"><span>MASZA</span></a>
-<a href="#STREET" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>STREET</span></a>
-<a href="#SOPHIE-RAIN" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>SOPHIE-RAIN</span></a>
-<a href="#SANDRA-ZALECKA" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>SANDRA-ZALECKA</span></a>
-<a href="#NIKITA" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>NIKITA</span></a>
-<a href="#YUKI" class="category"><img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1"><span>YUKI</span></a>
-<a href="#SHEEYA" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>SHEEYA</span></a>
-<a href="#CRAZY-OLIWKA" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>CRAZY-OLIWKA</span></a>
-<a href="#LEASY" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>LEASY</span></a>
-<a href="#MRHONEY" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>MRHONEY</span></a>
-<a href="#LIL-MASTI" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>LIL-MASTI</span></a>
-<a href="#QUEEN-OF-THE-BLACK" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>QUEEN-OF-THE-BLACK</span></a>
-<a href="#JULKA-GUZIK" class="category"><img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/dceepbg427nltpoirj3aw/468688070_18304023793200489_4258767904757490388_n.jpg?rlkey=2bfl4xp7yocm8ygtec6q042sy&st=y1polpma&raw=1"><span>JULKA-GUZIK</span></a>
-<a href="#SONGHELI" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>SONGHELI</span></a>
-<a href="#JEZIOROWSKA" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>JEZIOROWSKA</span></a>
-<a href="#MADZIA-LOSKOT" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>MADZIA-LOSKOT</span></a>
-<a href="#BUNNY-MARTHY" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>BUNNY-MARTHY</span></a>
-<a href="#Stopy" class="category"><img loading="lazy" alt="Zdj�cie premium" src=""><span>Stopy</span></a>
+<a href="#FAGATA" class="category"><img src=""><span>FAGATA</span></a>
+<a href="#MASZA" class="category"><img loading="eager" alt="Zdj?cie premium" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27300%27 height=%27200%27%3E%3Crect width=%27300%27 height=%27200%27 fill=%27%23ccc%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%23000%27%3EBrak zdj%C4%99cia%3C/text%3E%3C/svg%3E"><span>MASZA</span></a>
+<a href="#STREET" class="category"><img src=""><span>STREET</span></a>
+<a href="#SOPHIE-RAIN" class="category"><img src=""><span>SOPHIE-RAIN</span></a>
+<a href="#SANDRA-ZALECKA" class="category"><img src=""><span>SANDRA-ZALECKA</span></a>
+<a href="#NIKITA" class="category"><img src=""><span>NIKITA</span></a>
+<a href="#YUKI" class="category"><img loading="eager" alt="Zdj?cie premium" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27300%27 height=%27200%27%3E%3Crect width=%27300%27 height=%27200%27 fill=%27%23ccc%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%23000%27%3EBrak zdj%C4%99cia%3C/text%3E%3C/svg%3E"><span>YUKI</span></a>
+<a href="#SHEEYA" class="category"><img src=""><span>SHEEYA</span></a>
+<a href="#CRAZY-OLIWKA" class="category"><img src=""><span>CRAZY-OLIWKA</span></a>
+<a href="#LEASY" class="category"><img src=""><span>LEASY</span></a>
+<a href="#MRHONEY" class="category"><img src=""><span>MRHONEY</span></a>
+<a href="#LIL-MASTI" class="category"><img src=""><span>LIL-MASTI</span></a>
+<a href="#QUEEN-OF-THE-BLACK" class="category"><img src=""><span>QUEEN-OF-THE-BLACK</span></a>
+<a href="#JULKA-GUZIK" class="category"><img loading="eager" alt="Zdj?cie premium" src="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27300%27 height=%27200%27%3E%3Crect width=%27300%27 height=%27200%27 fill=%27%23ccc%27/%3E%3Ctext x=%2750%25%27 y=%2750%25%27 dominant-baseline=%27middle%27 text-anchor=%27middle%27 fill=%27%23000%27%3EBrak zdj%C4%99cia%3C/text%3E%3C/svg%3E"><span>JULKA-GUZIK</span></a>
+<a href="#SONGHELI" class="category"><img src=""><span>SONGHELI</span></a>
+<a href="#JEZIOROWSKA" class="category"><img src=""><span>JEZIOROWSKA</span></a>
+<a href="#MADZIA-LOSKOT" class="category"><img src=""><span>MADZIA-LOSKOT</span></a>
+<a href="#BUNNY-MARTHY" class="category"><img src=""><span>BUNNY-MARTHY</span></a>
+<a href="#Stopy" class="category"><img src=""><span>Stopy</span></a>
 </div>
 </div>
 
-<!-- ================= GALLERIES (puste pola gotowe do wstawienia zdjęć) ================= -->
+<!-- ================= GALLERIES (puste pola gotowe do wstawienia zdj??) ================= -->
 <div id="FAGATA" class="gallery">
-<a href="#" class="close">✕</a>
+<a href="#" class="close">?</a>
 <div class="slide-container" id="slides-fagata">
-<img loading="lazy" alt="Zdj�cie premium" src="">
-<img loading="lazy" alt="Zdj�cie premium" src="">
-<div class="watermark">© YOUR NAME</div>
-<a class="nav-btn prev" onclick="prevSlide('slides-fagata')">‹</a>
-<a class="nav-btn next" onclick="nextSlide('slides-fagata')">›</a>
+<img src="">
+<img src="">
+<div class="watermark">? YOUR NAME</div>
+<a class="nav-btn prev" onclick="prevSlide('slides-fagata')">?</a>
+<a class="nav-btn next" onclick="nextSlide('slides-fagata')">?</a>
 </div>
 </div>
 
 <div id="MASZA" class="gallery">
-<a href="#" class="close">✕</a>
-<a href="#" class="home-btn">🏠</a>
-<div class="gallery-title">MASZA</div>
+<a href="#" class="close">?</a>
 <div class="slide-container" id="slides-masza">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/gt2b2nxwls9fsikraevh0/image-7.png?rlkey=01w5t40cjhxtxu8ocu5lphkku&st=flka06qe&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/v8x35gxhccy5jbfj3gegz/Screenshot_2023-02-24-03-40-41-87_99c04817c0de5652397fc8b56c3b3817.jpg?rlkey=eh0dnpvkfk2vj8jqdw9ae01as&st=pwzmj7ie&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/0tvqak8wj11uy8320va02/image-1.png?rlkey=oxa437jrvy71vpgqwlzubzfor&st=mudt17pi&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/n6vptzzfgp50b5nh5m08y/image-2.png?rlkey=847qwd6wv20b93ql6lzmqy5fg&st=27uywye4&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/7k0hrbrnb662bxj8v6aqh/image-3.png?rlkey=3p0w0xueqzra1srp5mztomjgy&st=141ggyp7&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/oaltkb6mj1nvb27muuzoj/image-4.png?rlkey=0ex2x7e1jygeh0px1rukjulyb&st=j4g7v8tm&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/md5chxkewzodxxn828q0l/image-5.png?rlkey=rbpn998t18654iwelcnsjegrj&st=8vd0f50o&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/75p9bgb1qd06qnvlep7g4/image-6.png?rlkey=nfk074b7d46f6ke73xp2o0zqe&st=bcwteapo&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/gt2b2nxwls9fsikraevh0/image-7.png?rlkey=01w5t40cjhxtxu8ocu5lphkku&st=xls4gqdk&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/rt2cypx1bhf6ld2rlnv3p/image-8.png?rlkey=geklmiwwo8u0mvwttpfe3snuq&st=c3j8k785&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/b2yqhjmm6ep2w8oqta1pu/image.png?rlkey=ztwp8gqu7wq1m1zezpbs30i7h&st=ya4emzyk&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/qwd2476esao9w18q18e9f/Masza.png?rlkey=ux06faxlryr7vrm093gg9itmu&st=3ydfkvvb&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/keicnlbunpcrhjvlhi4ml/masza2.png?rlkey=bz2b53fq7rpsy19dxp4tp90q5&st=93hug2qx&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/8o61zg57d8r9jopibjdh9/RDT_20251216_1509046674551585147204841.jpg?rlkey=53n2iccpyjlxk95sqc9jy7u1a&st=qinvghq0&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/75irbyma8inmfw7ggte9b/RDT_20251216_1509153071831229900295668.jpg?rlkey=rf5mq4qpytdmjderqtip2pwzo&st=k2nlsef7&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ejzyd68ydwtor283msegi/RDT_20251216_1509205313405630051166093.jpg?rlkey=ilgr85o0073sw7xgeugq7kf6c&st=tunv40ah&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/w0bud5cugbmcayapnzfbl/RDT_20251216_1509467928764274084682191.jpg?rlkey=x5a1ibzuc9dipyr6r8nrcjwgr&st=y1mbzcsa&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ur4yqkqwxqacqeah8dmvd/RDT_20251216_1509537954140155941661715.jpg?rlkey=5vh5jlfqg2oddor7xjh39znug&st=bnberbut&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/vsfc27wt3k6d4vw3w71l0/RDT_20251216_1509573374472026620720742.jpg?rlkey=yudl1smy6h6k1gozrtmcgdl7z&st=liaizhaf&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/2t0o9b9yszwxtpwu7r2eu/RDT_20251216_1510007375458096246044558.jpg?rlkey=czxc6bj5k7vbqsf1huomzchte&st=7m1kf9hc&raw=1">
- <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/zc57fumbc1p40nha41dy6/RDT_20251216_1510032094280762347949496.jpg?rlkey=qnukyb0vhuneu1zqye1y6afze&st=1hfjq30p&raw=1">
-<div class="watermark">© YOUR NAME</div>
-<a class="nav-btn prev" onclick="prevSlide('slides-masza')">‹</a>
-<a class="nav-btn next" onclick="nextSlide('slides-masza')">›</a>
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/gt2b2nxwls9fsikraevh0/image-7.png?rlkey=01w5t40cjhxtxu8ocu5lphkku&st=flka06qe&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/v8x35gxhccy5jbfj3gegz/Screenshot_2023-02-24-03-40-41-87_99c04817c0de5652397fc8b56c3b3817.jpg?rlkey=eh0dnpvkfk2vj8jqdw9ae01as&st=pwzmj7ie&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/0tvqak8wj11uy8320va02/image-1.png?rlkey=oxa437jrvy71vpgqwlzubzfor&st=mudt17pi&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/n6vptzzfgp50b5nh5m08y/image-2.png?rlkey=847qwd6wv20b93ql6lzmqy5fg&st=27uywye4&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/7k0hrbrnb662bxj8v6aqh/image-3.png?rlkey=3p0w0xueqzra1srp5mztomjgy&st=141ggyp7&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/oaltkb6mj1nvb27muuzoj/image-4.png?rlkey=0ex2x7e1jygeh0px1rukjulyb&st=j4g7v8tm&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/md5chxkewzodxxn828q0l/image-5.png?rlkey=rbpn998t18654iwelcnsjegrj&st=8vd0f50o&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/75p9bgb1qd06qnvlep7g4/image-6.png?rlkey=nfk074b7d46f6ke73xp2o0zqe&st=bcwteapo&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/gt2b2nxwls9fsikraevh0/image-7.png?rlkey=01w5t40cjhxtxu8ocu5lphkku&st=xls4gqdk&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/rt2cypx1bhf6ld2rlnv3p/image-8.png?rlkey=geklmiwwo8u0mvwttpfe3snuq&st=c3j8k785&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/b2yqhjmm6ep2w8oqta1pu/image.png?rlkey=ztwp8gqu7wq1m1zezpbs30i7h&st=ya4emzyk&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/qwd2476esao9w18q18e9f/Masza.png?rlkey=ux06faxlryr7vrm093gg9itmu&st=3ydfkvvb&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/keicnlbunpcrhjvlhi4ml/masza2.png?rlkey=bz2b53fq7rpsy19dxp4tp90q5&st=93hug2qx&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/8o61zg57d8r9jopibjdh9/RDT_20251216_1509046674551585147204841.jpg?rlkey=53n2iccpyjlxk95sqc9jy7u1a&st=qinvghq0&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/75irbyma8inmfw7ggte9b/RDT_20251216_1509153071831229900295668.jpg?rlkey=rf5mq4qpytdmjderqtip2pwzo&st=k2nlsef7&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ejzyd68ydwtor283msegi/RDT_20251216_1509205313405630051166093.jpg?rlkey=ilgr85o0073sw7xgeugq7kf6c&st=tunv40ah&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/w0bud5cugbmcayapnzfbl/RDT_20251216_1509467928764274084682191.jpg?rlkey=x5a1ibzuc9dipyr6r8nrcjwgr&st=y1mbzcsa&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ur4yqkqwxqacqeah8dmvd/RDT_20251216_1509537954140155941661715.jpg?rlkey=5vh5jlfqg2oddor7xjh39znug&st=bnberbut&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/vsfc27wt3k6d4vw3w71l0/RDT_20251216_1509573374472026620720742.jpg?rlkey=yudl1smy6h6k1gozrtmcgdl7z&st=liaizhaf&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/2t0o9b9yszwxtpwu7r2eu/RDT_20251216_1510007375458096246044558.jpg?rlkey=czxc6bj5k7vbqsf1huomzchte&st=7m1kf9hc&raw=1">
+ <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/zc57fumbc1p40nha41dy6/RDT_20251216_1510032094280762347949496.jpg?rlkey=qnukyb0vhuneu1zqye1y6afze&st=1hfjq30p&raw=1">
+<div class="watermark">? YOUR NAME</div>
+<a class="nav-btn prev" onclick="prevSlide('slides-masza')">?</a>
+<a class="nav-btn next" onclick="nextSlide('slides-masza')">?</a>
 </div>
-<div class="progress-bar" id="progress-masza"></div>
-<button class="random-btn" onclick="randomImage('slides-masza')">🔀</button>
 </div>
 
 <div id="YUKI" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-yuki">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/5g5z7ph5s7zur0e5qzkz8/30525775-img-0498.jpg?rlkey=pf3aw3vq53u343rvyv73hisqp&st=9nbshsjo&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/f3jrhb4jcw8uv1cnhv42y/RDT_20251215_201604625290735101931840.jpg?rlkey=9t0ttl776rok0p9ddssbik69m&st=1t33cmky&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/rvegvm1pcg9wpdutzgsfw/RDT_20251215_1955324568695244664937236.jpg?rlkey=ru0e6n1x81q8t0k807s5jvi38&st=djs9ytsj&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/2rn23qtasv1v3oufkxc7l/RDT_20251215_1958175318623513793025404.jpg?rlkey=mg2sl7ld3mhko01dqn2i8kc3a&st=cgi4cuju&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ta9pux3d7ccs7v78usee8/RDT_20251215_1958411809498948724489751.jpg?rlkey=1dvm3e229qouordx3mazytl9y&st=odn5og00&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ciqiqq6nvir49t5m6y2x2/RDT_20251215_1958477608323567252578183.jpg?rlkey=5klrqrok32z6yjww5wq6pd8j4&st=jrx5a60y&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/eo8z0l2n68pcy0yg2188k/RDT_20251215_2016268543256624796116008.jpg?rlkey=szbbc0lmw6cd8kkrcfcv8xmg2&st=qkkp53sw&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/admxb3imegdflcmu615km/RDT_20251216_1507034561211516722233251.jpg?rlkey=a7vle83nn17yke9f5ax5rnk1d&st=6fcx0zqa&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/rga0dxcjaw0qvx4kty5r3/RDT_20251216_1508296217845496830269251.jpg?rlkey=ftto2qwlofrq0hfjabu77m1dv&st=od0vl85l&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/yehvpujjnhzymoirfa628/yukiszwaczka_0084.jpg?rlkey=o1kbc9x14a51qnyqgcnw475q2&st=roitc3lq&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/4w95upyxf7u7u0v3w3dpk/yukiszwaczka_0089.jpg?rlkey=qxks9n2ny0xoiyn5xrsrd7qqu&st=97288flj&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/rublf1ghu3se54kk29m3e/yukiszwaczka-1-1.webp?rlkey=ahudrxjaxsl3cvcmtqrqb3dor&st=lg3h4quq&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=oif1dy9w&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/672xyi7ka6qmv56s8scu6/yukiszwaczka-1-3.webp?rlkey=tc5nao8h4h9x3dzuj0jeixv0o&st=1y0q1igo&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/87cjcskifg7ks0xlfqvo3/yukiszwaczka-1.webp?rlkey=shkttjewry6dtg6s4jt3y0df2&st=ptrd96hm&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/z2fqqto7osf0rnhfisihp/yukiszwaczka-onlyfans-6i0oq-2.jpg?rlkey=2f36509wk7urjlwy1ovdvwbcs&st=pxdbmykt&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/x66n4nl7pdwwr2otvxkq4/yukiszwaczka-onlyfans-rjdn9-2.jpg?rlkey=d62w1si9y9vbspatsdrtwuray&st=jm5ydbvg&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/o5jtnukfqs1rhypucisun/yukiszwaczka-onlyfans-zffg1-6.jpg?rlkey=yoi8yv2fpsxzpkptcbywpd3ry&st=sh2cjle4&raw=1">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-yuki')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-yuki')">›</a>
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/5g5z7ph5s7zur0e5qzkz8/30525775-img-0498.jpg?rlkey=pf3aw3vq53u343rvyv73hisqp&st=9nbshsjo&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/f3jrhb4jcw8uv1cnhv42y/RDT_20251215_201604625290735101931840.jpg?rlkey=9t0ttl776rok0p9ddssbik69m&st=1t33cmky&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/rvegvm1pcg9wpdutzgsfw/RDT_20251215_1955324568695244664937236.jpg?rlkey=ru0e6n1x81q8t0k807s5jvi38&st=djs9ytsj&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/2rn23qtasv1v3oufkxc7l/RDT_20251215_1958175318623513793025404.jpg?rlkey=mg2sl7ld3mhko01dqn2i8kc3a&st=cgi4cuju&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ta9pux3d7ccs7v78usee8/RDT_20251215_1958411809498948724489751.jpg?rlkey=1dvm3e229qouordx3mazytl9y&st=odn5og00&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ciqiqq6nvir49t5m6y2x2/RDT_20251215_1958477608323567252578183.jpg?rlkey=5klrqrok32z6yjww5wq6pd8j4&st=jrx5a60y&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/eo8z0l2n68pcy0yg2188k/RDT_20251215_2016268543256624796116008.jpg?rlkey=szbbc0lmw6cd8kkrcfcv8xmg2&st=qkkp53sw&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/admxb3imegdflcmu615km/RDT_20251216_1507034561211516722233251.jpg?rlkey=a7vle83nn17yke9f5ax5rnk1d&st=6fcx0zqa&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/rga0dxcjaw0qvx4kty5r3/RDT_20251216_1508296217845496830269251.jpg?rlkey=ftto2qwlofrq0hfjabu77m1dv&st=od0vl85l&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/yehvpujjnhzymoirfa628/yukiszwaczka_0084.jpg?rlkey=o1kbc9x14a51qnyqgcnw475q2&st=roitc3lq&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/4w95upyxf7u7u0v3w3dpk/yukiszwaczka_0089.jpg?rlkey=qxks9n2ny0xoiyn5xrsrd7qqu&st=97288flj&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/rublf1ghu3se54kk29m3e/yukiszwaczka-1-1.webp?rlkey=ahudrxjaxsl3cvcmtqrqb3dor&st=lg3h4quq&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=oif1dy9w&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/672xyi7ka6qmv56s8scu6/yukiszwaczka-1-3.webp?rlkey=tc5nao8h4h9x3dzuj0jeixv0o&st=1y0q1igo&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/87cjcskifg7ks0xlfqvo3/yukiszwaczka-1.webp?rlkey=shkttjewry6dtg6s4jt3y0df2&st=ptrd96hm&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/z2fqqto7osf0rnhfisihp/yukiszwaczka-onlyfans-6i0oq-2.jpg?rlkey=2f36509wk7urjlwy1ovdvwbcs&st=pxdbmykt&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/x66n4nl7pdwwr2otvxkq4/yukiszwaczka-onlyfans-rjdn9-2.jpg?rlkey=d62w1si9y9vbspatsdrtwuray&st=jm5ydbvg&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/o5jtnukfqs1rhypucisun/yukiszwaczka-onlyfans-zffg1-6.jpg?rlkey=yoi8yv2fpsxzpkptcbywpd3ry&st=sh2cjle4&raw=1">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-yuki')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-yuki')">?</a>
   </div>
-<div class="progress-bar" id="progress-yuki"></div>
 </div>
 
 <!-- SANDRA-ZALECKA -->
 <div id="SANDRA-ZALECKA" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-sandra">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-sandra')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-sandra')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-sandra')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-sandra')">?</a>
   </div>
 </div>
 
 <!-- NIKITA -->
 <div id="NIKITA" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-nikita">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-nikita')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-nikita')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-nikita')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-nikita')">?</a>
   </div>
 </div>
 
 <!-- SHEEYA -->
 <div id="SHEEYA" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-sheeya">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-sheeya')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-sheeya')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-sheeya')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-sheeya')">?</a>
   </div>
 </div>
 
 <!-- CRAZY-OLIWKA -->
 <div id="CRAZY-OLIWKA" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-crazy">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-crazy')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-crazy')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-crazy')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-crazy')">?</a>
   </div>
 </div>
 
 <!-- LEASY -->
 <div id="LEASY" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-leasy">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-leasy')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-leasy')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-leasy')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-leasy')">?</a>
   </div>
 </div>
 
 <!-- MRHONEY -->
 <div id="MRHONEY" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-mrhoney">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-mrhoney')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-mrhoney')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-mrhoney')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-mrhoney')">?</a>
   </div>
 </div>
 
 <!-- LIL-MASTI -->
 <div id="LIL-MASTI" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-lilmasti">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-lilmasti')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-lilmasti')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-lilmasti')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-lilmasti')">?</a>
   </div>
 </div>
 
 <!-- QUEEN-OF-THE-BLACK -->
 <div id="QUEEN-OF-THE-BLACK" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-queen">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-queen')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-queen')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-queen')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-queen')">?</a>
   </div>
 </div>
 
 <!-- JULKA-GUZIK -->
 <div id="JULKA-GUZIK" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-julka">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/utgcdx87cpxrmpbjh00cz/2023-06-09-20.27.23.jpg?rlkey=tjth87qggmoof0kze8mkgwdxz&st=8kzrnpgk&rawp">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/jhjslhfu7rop1rwkf1cx8/2023-06-09-20.27.30.jpg?rlkey=0877qtqxa2j1spjxjdlrjojr7&st=wfnynstg&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/3fzt99kzeb22dzzvc1qdi/2023-09-24-22.07.19.jpg?rlkey=5v4k7q9tkc3tp43sgsafx0yus&st=oi54xhwl&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/o2mv9ud32oeuw5g40058e/2023-09-25-10.10.10.jpg?rlkey=wr0l260x3eyax43w4z535umbb&st=ocdrqxfi&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/tccmjbfi6ilq4r9820l9c/2023-09-25-22.20.06.jpg?rlkey=u62vr6x05d6un0lbbauua4ox8&st=wgx904t5&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/oa8fmd5m64j9o6qpsdmxd/2023-09-25-22.20.11.jpg?rlkey=b35x1xnevzc34xafs59gtnpyu&st=7juacgre&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/n0uah475xodexg3e5okyo/2023-09-30-18.06.00_1.jpg?rlkey=ie73bnymywv8d9sh742b9mvd3&st=lp34u87z&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/j69azl5x1lc2vezokcowr/2023-09-30-18.06.00.jpg?rlkey=k61rdcl8n0j8jh1nq6xrcy335&st=36vd0zya&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/k0s3y4r0xmfe9zy5or03d/2023-10-25-18.15.25.jpg?rlkey=k3kjg90hsnz3gwm719t6pmdz8&st=6ll758h3&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/mzdz6oplhmga3rx1exqqr/2023-11-10-00.30.25.jpg?rlkey=vf3z58dcnznb0bmvuqi589ly6&st=qnmwf98r&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/pgd11a09p5jfaa1o2kz7n/2023-11-20-13.29.04.jpg?rlkey=tb2zxxu1sw9dzbulrcpk3hq13&st=o02awbk3&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/7pmf1mnne043pz5fkcuta/2023-11-20-13.29.16.jpg?rlkey=4xgbd0e8f1a1fq4s63ooujiqs&st=1gr2y212&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/gwejga4uc109gll2ulr9g/2023-11-20-13.29.22.jpg?rlkey=337mw5qbxr7nkwnc4kotacc20&st=cec1y2iw&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/y12o0tqwyjwoegk25sxfh/2023-11-20-13.29.31.jpg?rlkey=kr4q8nh6w3m086wu23m1eviu8&st=9k5l15w7&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/n58c0muo9mdcj0dr1qrxf/2023-11-20-13.29.36.jpg?rlkey=ath2gq36e72syl3uqecxhmyjj&st=i14kdgbj&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ge1kel85ksdqos868u7os/2023-11-20-13.29.41.jpg?rlkey=m0ll1i0ew0qcqbvein922qyed&st=aa7bl6mj&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/4nluy6x9xwkzllsu605cp/2023-11-20-13.29.47.jpg?rlkey=3m5gn0j4x3iezwiiy7mzyonea&st=xjcs8k75&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/43a49v78xltelgx7gs4gu/2023-11-20-13.29.59.jpg?rlkey=555odi223xejzzzgudbaw4bjb&st=sx1334mv&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/97i45dr4ettjcd6jcsx4k/2023-11-20-13.30.05.jpg?rlkey=qq31q9db0gqlvig8f7m8n10qt&st=sbiazxky&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/u8gtcw3wqg6mp12hxy95v/2023-11-20-13.30.09.jpg?rlkey=fz88r636izwclpb73401gdbn2&st=wf9uwhis&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/2hrgfa2xnryb0tj8g202d/2023-11-20-13.30.15.jpg?rlkey=f2kfee6il8jm281v3z24995bp&st=iipu1nlo&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/xuirfnntb818nmhv8wo7t/2023-11-20-13.30.21.jpg?rlkey=i1nlq8ahu1ojf7gtwtjjisyxp&st=fvev3594&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/23w41opxgwj0vpn6m4owu/2023-11-20-13.30.31.jpg?rlkey=o1exp2xo6oia9yk82zv4zfu3g&st=1sfwbiqx&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/t13n2l3wlmvhadufl53r4/2023-11-20-13.30.36.jpg?rlkey=vgg4ttrnw6s7jsqurmtkhogzs&st=j59xfga7&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/yj3ebiljqxumhze0zghy3/2023-11-20-13.30.41.jpg?rlkey=aw5b6gpegbeueigkpo56fwff4&st=g8u589la&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/72xjcnl2eqve9w8nd56ql/2023-11-20-13.30.46.jpg?rlkey=if4eh25m7nnfsxkhagkyly304&st=8b1ukj3c&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/6a8pe7xgq0bf9e27hpptk/2023-11-20-13.30.54.jpg?rlkey=q13polpq2pgesv5kh3f4sbli8&st=mawoiy1z&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/w9dxoz2btptz07qwcz4b8/2023-11-20-13.31.00.jpg?rlkey=hsz9qz1scb6zrikx5l3k0l1ch&st=ka5u1wvt&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/w1fanmtycyh3libv8z58y/2023-11-20-13.31.06.jpg?rlkey=i51n1u1vhd9tp238xj3fctm08&st=9q4zartp&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/2bibp9awcfss3qttgsd6w/2023-11-20-13.31.14.jpg?rlkey=orhuk18wo7ht9sj4vtjtl64gg&st=eu27vdc2&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/36z6ek8yn6lknzqtaezst/2023-11-20-13.31.23.jpg?rlkey=pfibpk20hf6o193rhxvtwmn28&st=cv8e4g5l&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ddp1y0y1v9e5no366ccl9/2023-11-20-13.31.31.jpg?rlkey=zgi1cbeqdthjkg0bp6aflvrjl&st=mpzafgxx&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/dc2ja9xih66xrhckmcqs3/2023-11-20-13.31.37.jpg?rlkey=7mohouklka4kzyi2i5iqh0xdr&st=8tnmx2ao&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/zx6v93h2n9ekngty31scd/2023-11-20-13.31.42.jpg?rlkey=heky05ajya7y4gzvbiwltr8ik&st=3vhw2lb4&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/jq7yldx0xt2hhxscu2ivb/2023-11-20-13.31.48.jpg?rlkey=nxuc6k0jqjsn6bgqe8ts5q801&st=30vh8m3t&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/80sivkyy021asccbhjj76/2023-11-20-13.31.54.jpg?rlkey=ofu9yhh3uqa7cmu2dc4uw3ml9&st=s7l5dq3j&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/3llet6xogafp0j3ailhm8/2023-11-20-13.32.00.jpg?rlkey=iypdzzcentetyk16ornljeu9v&st=mk5xe6qa&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/64jkj3smo9923pzew3x7i/Screenshot_20220711_161708_com.huawei.himovie.overseas.jpg?rlkey=rslq03g2jcoywc1zbur2h5e2u&st=g1p381d1&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ccx00n9y89xteyj1bbmez/Screenshot_20220711_200133_com.reddit.frontpage.jpg?rlkey=x54jd48dl3slqx1op7rd78j1l&st=3o889aqz&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/snkjmjvlqbn0de7qf8lbc/Screenshot_20220711_200143_com.reddit.frontpage.jpg?rlkey=nfebdq3kzwvigyvajx10oxoqw&st=rua78nnw&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/3yzmg5vd05i41f2mm95jn/Screenshot_20220713_231445_com.huawei.himovie.overseas.jpg?rlkey=v38btimcjnzagucsmpwjc4ik1&st=znpzcr31&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/t0omqmwqkkjmevpo0y8jt/Screenshot_20220713_232411_com.snapchat.android.jpg?rlkey=vkw7580qbhgy8vm8zi56947za&st=7zlujsza&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/tboj1qgwcp757hxkvy1db/Screenshot_20220714_000334_com.snapchat.android.jpg?rlkey=z0xph52g22xvk9v17ptjp21i1&st=xpn7u14j&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/8obezzqkc2mqlhzfjxny6/Screenshot_20220713_232414_com.snapchat.android.jpg?rlkey=le7e0wrulnavp28zbl4p7qp0l&st=vrp0ls91&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/baps95sdz0r5e5so4psiu/Screenshot_20220714_000859_com.snapchat.android.jpg?rlkey=wa22v82vxdu40xa86e8br787g&st=7lgy6nk0&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/em22ipodoyeb51bcwybhg/Screenshot_20220714_001640_com.snapchat.android.jpg?rlkey=21qg6rkqqet8xf8trgtembaiz&st=w7mz6gmu&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/b04cr9yofoqre089ias0f/Screenshot_20220714_001643_com.snapchat.android.jpg?rlkey=7oyphviz84y2ni3vysv5dufbp&st=4bqsv74u&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/dh6v163jmy3yzi40tvhce/Screenshot_20220714_001647_com.snapchat.android.jpg?rlkey=4ba16gfjf56y1xftykj1lfglm&st=gk1gonpn&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/c5favnmcz01a2271vuiqp/Screenshot_20220714_001650_com.snapchat.android.jpg?rlkey=mr64x8998wj3s8rgif3qwc3jd&st=adezomg3&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/oq4jcdommiicbd0ukl1o1/Screenshot_20220714_001653_com.snapchat.android.jpg?rlkey=m4nflok6z5flbltf4sq8hntwj&st=p8xybqek&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/krrj0vxe6d3lpmqx3sxo0/Screenshot_20220714_005858_com.huawei.himovie.overseas.jpg?rlkey=5jewiz36316t1a0mjbksu4ou4&st=0xtx4f6s&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/xu93g1t3iqtgogukzbi87/Screenshot_20220716_223457_com.snapchat.android.jpg?rlkey=73xavc5im8kmnvkuk33dsbb4l&st=a7igc7qn&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/qo6g4nfh1fk10fx5i2u23/Screenshot_20220716_223522_com.snapchat.android.jpg?rlkey=riue00pragj9c05jc0m86w1c7&st=a9f0sr41&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ax9tnvgyrezkerlovmnjf/Screenshot_20220716_223525_com.snapchat.android.jpg?rlkey=z2u1eklpva2ahpahkb0ieq13i&st=c9o3hvv7&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/s1pqffc5g5p1gycwmfkct/Screenshot_20220716_223527_com.snapchat.android.jpg?rlkey=twn88if9u7khry3d2tgemh8it&st=hfqepol0&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/edpa8xvgjbpmh1kkwlb9o/Screenshot_20220716_223627_com.snapchat.android.jpg?rlkey=9bnfztz1pya8qpy1276zoemd1&st=swh5rn1p&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/66c1nnibco81vi8n0ev8b/Screenshot_20220716_223629_com.snapchat.android.jpg?rlkey=39l6kdj33ivpq6azpvdhoem9r&st=7dii6328&&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/o6cw6nyx871d40c6fpiwz/Screenshot_20220716_223630_com.snapchat.android.jpg?rlkey=wembhs0f4q060s7f8p7fw7cgh&st=ordbj4sq&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/6snkwydytwdsvzkpq41vf/Screenshot_20220716_223643_com.snapchat.android.jpg?rlkey=qaqq3ld0tlcikuk9yrafhzzh6&st=yhz0n7gx&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/h9ccz4g9mj2k7wjf8nx3a/Screenshot_20220716_224043_com.snapchat.android.jpg?rlkey=vcjdpnsedmfun715ja01s4ktx&st=j74vfqjt&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/kv6ne10ihpswar6ae73w0/Screenshot_20220716_224045_com.snapchat.android.jpg?rlkey=64ai5xebhj6sc5yddz6gahak7&st=k01g0ym1&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/84twbb4eczifjll9qqofz/Screenshot_20220716_224047_com.snapchat.android.jpg?rlkey=ix2hyg0l5bjaawc4uguhya35f&st=r5r3mlz7&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/gb1d167gyq5a1v2kstqx4/Screenshot_20220716_224050_com.snapchat.android.jpg?rlkey=5obzxw16i43120hsu6buedjtf&st=yzxkpfsw&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/rxo58ekgh0c83y5kd8esx/Screenshot_20220828_124533_org.telegram.messenger.jpg?rlkey=uy6zsob8dg6dk5r3c33b7xn7l&st=mumr5ct4&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/8npa0i3z67ge2ap846u9o/Screenshot_20220828_124535_org.telegram.messenger.jpg?rlkey=xjk4t4jmo0g8l6vrmrmkqtcj0&st=068gbh3j&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/o38vkmvpqtqq2raswdi5o/Screenshot_20220828_124537_org.telegram.messenger.jpg?rlkey=oax9wdkqoeicwac2x5fl65xnx&st=1hqr5tgd&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/c7wbc77o1hodae27vb1qc/Screenshot_20220828_124538_org.telegram.messenger.jpg?rlkey=ta5nl26e6jpejs968ylhqnvz6&st=nmxo5ry1&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/v7plqr4ymv6vzmts5y2v2/Snapchat-259809776.jpg?rlkey=bddmhs00dloafq406w8u1foxv&st=51g8so3e&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/9pq68hve1yljpd0cku387/Snapchat-273197650.jpg?rlkey=qi8pwjed4rw6y71qa8gee9tk1&st=izbax6ou&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/dfdn1e76froeeqw3vou1x/Snapchat-285984575.jpg?rlkey=kj1lhe1z5qa7j2losbhrl882o&st=arbgmmpf&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/kcc0jxhqv5f26qj7vlmyf/Snapchat-335910375.jpg?rlkey=sn2kh44grqtofdm9bsblkppcm&st=fo8i619w&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/m1gh9h0szl6soglbgzdez/Snapchat-347903405.jpg?rlkey=0486yz97b22s3pcnvnjcfq7mo&st=88ombvzy&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/xiipxgzcs8h7ttyctm8h6/Snapchat-566687395.jpg?rlkey=6higmi5p2gl3bzyk17itanbzw&st=ccdkbkn6&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/rzt2o8y1gang6opwm8u82/Snapchat-578552676.jpg?rlkey=8p48u16torzdervgrfilpi4we&st=3l0my095&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/5h3uhiyvupgq180etvq7k/Snapchat-598646331.jpg?rlkey=w5n919ws10mtu3by0v5uv6hql&st=sl509z5z&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/y4jq0cyxdks07hg555top/Snapchat-872874078.jpg?rlkey=waler7d0h00r67tkclh2nk3fe&st=xmab9zqp&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/9xfh77uuj73420qugc0az/Snapchat-1086957095.jpg?rlkey=e10pb7rs39hfpme62t6nic1jf&st=hpnhzmff&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/miwp5xui24omc5d7fcdl0/Snapchat-1159560430.jpg?rlkey=17xpc8zvwmhyrqsl89nnz2izq&st=ykcjk3oo&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/1va1lfdglghvi5miox49l/Snapchat-1219069380.jpg?rlkey=ubhof4iiy8a3jjh4vp0yakx49&st=20w1x7bn&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/dx67vkkvn56542gjrx0hh/Snapchat-1273279216.jpg?rlkey=8wvc44b935ancw5qohck4j8m7&st=b864jaha&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/gbc8ss9mdpg2iwl8li9sz/Snapchat-1396554327.jpg?rlkey=4f0tdshdo6kvsrb1vtp91hgh8&st=zyigwpup&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/q5t6lmnygtfq43baq0awc/Snapchat-1571985796.jpg?rlkey=jh3wkyim36hanoprt1gxmllst&st=zz0jlkcs&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/gbswv7p3opfj9wtddio52/Snapchat-1596071810.jpg?rlkey=pru17t4vbrp6fkig2a0p8640z&st=jy3irfed&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/wqpnrpvr9ab9oy35qd9a4/Snapchat-2000271374.jpg?rlkey=tpjqbubp9jsfberrdy49h90zd&st=ba9onhiw&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/tg23kujvmf3gpm1ypfddp/Snapchat-2135800664.jpg?rlkey=sr4480cgsxnxacqxts347f16w&st=4t1ao2rw&raw=1">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-julka')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-julka')">›</a>
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/utgcdx87cpxrmpbjh00cz/2023-06-09-20.27.23.jpg?rlkey=tjth87qggmoof0kze8mkgwdxz&st=8kzrnpgk&rawp">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/jhjslhfu7rop1rwkf1cx8/2023-06-09-20.27.30.jpg?rlkey=0877qtqxa2j1spjxjdlrjojr7&st=wfnynstg&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/3fzt99kzeb22dzzvc1qdi/2023-09-24-22.07.19.jpg?rlkey=5v4k7q9tkc3tp43sgsafx0yus&st=oi54xhwl&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/o2mv9ud32oeuw5g40058e/2023-09-25-10.10.10.jpg?rlkey=wr0l260x3eyax43w4z535umbb&st=ocdrqxfi&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/tccmjbfi6ilq4r9820l9c/2023-09-25-22.20.06.jpg?rlkey=u62vr6x05d6un0lbbauua4ox8&st=wgx904t5&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/oa8fmd5m64j9o6qpsdmxd/2023-09-25-22.20.11.jpg?rlkey=b35x1xnevzc34xafs59gtnpyu&st=7juacgre&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/n0uah475xodexg3e5okyo/2023-09-30-18.06.00_1.jpg?rlkey=ie73bnymywv8d9sh742b9mvd3&st=lp34u87z&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/j69azl5x1lc2vezokcowr/2023-09-30-18.06.00.jpg?rlkey=k61rdcl8n0j8jh1nq6xrcy335&st=36vd0zya&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/k0s3y4r0xmfe9zy5or03d/2023-10-25-18.15.25.jpg?rlkey=k3kjg90hsnz3gwm719t6pmdz8&st=6ll758h3&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/mzdz6oplhmga3rx1exqqr/2023-11-10-00.30.25.jpg?rlkey=vf3z58dcnznb0bmvuqi589ly6&st=qnmwf98r&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/pgd11a09p5jfaa1o2kz7n/2023-11-20-13.29.04.jpg?rlkey=tb2zxxu1sw9dzbulrcpk3hq13&st=o02awbk3&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/7pmf1mnne043pz5fkcuta/2023-11-20-13.29.16.jpg?rlkey=4xgbd0e8f1a1fq4s63ooujiqs&st=1gr2y212&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/gwejga4uc109gll2ulr9g/2023-11-20-13.29.22.jpg?rlkey=337mw5qbxr7nkwnc4kotacc20&st=cec1y2iw&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/y12o0tqwyjwoegk25sxfh/2023-11-20-13.29.31.jpg?rlkey=kr4q8nh6w3m086wu23m1eviu8&st=9k5l15w7&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/n58c0muo9mdcj0dr1qrxf/2023-11-20-13.29.36.jpg?rlkey=ath2gq36e72syl3uqecxhmyjj&st=i14kdgbj&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ge1kel85ksdqos868u7os/2023-11-20-13.29.41.jpg?rlkey=m0ll1i0ew0qcqbvein922qyed&st=aa7bl6mj&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/4nluy6x9xwkzllsu605cp/2023-11-20-13.29.47.jpg?rlkey=3m5gn0j4x3iezwiiy7mzyonea&st=xjcs8k75&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/43a49v78xltelgx7gs4gu/2023-11-20-13.29.59.jpg?rlkey=555odi223xejzzzgudbaw4bjb&st=sx1334mv&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/97i45dr4ettjcd6jcsx4k/2023-11-20-13.30.05.jpg?rlkey=qq31q9db0gqlvig8f7m8n10qt&st=sbiazxky&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/u8gtcw3wqg6mp12hxy95v/2023-11-20-13.30.09.jpg?rlkey=fz88r636izwclpb73401gdbn2&st=wf9uwhis&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/2hrgfa2xnryb0tj8g202d/2023-11-20-13.30.15.jpg?rlkey=f2kfee6il8jm281v3z24995bp&st=iipu1nlo&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/xuirfnntb818nmhv8wo7t/2023-11-20-13.30.21.jpg?rlkey=i1nlq8ahu1ojf7gtwtjjisyxp&st=fvev3594&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/23w41opxgwj0vpn6m4owu/2023-11-20-13.30.31.jpg?rlkey=o1exp2xo6oia9yk82zv4zfu3g&st=1sfwbiqx&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/t13n2l3wlmvhadufl53r4/2023-11-20-13.30.36.jpg?rlkey=vgg4ttrnw6s7jsqurmtkhogzs&st=j59xfga7&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/yj3ebiljqxumhze0zghy3/2023-11-20-13.30.41.jpg?rlkey=aw5b6gpegbeueigkpo56fwff4&st=g8u589la&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/72xjcnl2eqve9w8nd56ql/2023-11-20-13.30.46.jpg?rlkey=if4eh25m7nnfsxkhagkyly304&st=8b1ukj3c&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/6a8pe7xgq0bf9e27hpptk/2023-11-20-13.30.54.jpg?rlkey=q13polpq2pgesv5kh3f4sbli8&st=mawoiy1z&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/w9dxoz2btptz07qwcz4b8/2023-11-20-13.31.00.jpg?rlkey=hsz9qz1scb6zrikx5l3k0l1ch&st=ka5u1wvt&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/w1fanmtycyh3libv8z58y/2023-11-20-13.31.06.jpg?rlkey=i51n1u1vhd9tp238xj3fctm08&st=9q4zartp&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/2bibp9awcfss3qttgsd6w/2023-11-20-13.31.14.jpg?rlkey=orhuk18wo7ht9sj4vtjtl64gg&st=eu27vdc2&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/36z6ek8yn6lknzqtaezst/2023-11-20-13.31.23.jpg?rlkey=pfibpk20hf6o193rhxvtwmn28&st=cv8e4g5l&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ddp1y0y1v9e5no366ccl9/2023-11-20-13.31.31.jpg?rlkey=zgi1cbeqdthjkg0bp6aflvrjl&st=mpzafgxx&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/dc2ja9xih66xrhckmcqs3/2023-11-20-13.31.37.jpg?rlkey=7mohouklka4kzyi2i5iqh0xdr&st=8tnmx2ao&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/zx6v93h2n9ekngty31scd/2023-11-20-13.31.42.jpg?rlkey=heky05ajya7y4gzvbiwltr8ik&st=3vhw2lb4&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/jq7yldx0xt2hhxscu2ivb/2023-11-20-13.31.48.jpg?rlkey=nxuc6k0jqjsn6bgqe8ts5q801&st=30vh8m3t&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/80sivkyy021asccbhjj76/2023-11-20-13.31.54.jpg?rlkey=ofu9yhh3uqa7cmu2dc4uw3ml9&st=s7l5dq3j&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/3llet6xogafp0j3ailhm8/2023-11-20-13.32.00.jpg?rlkey=iypdzzcentetyk16ornljeu9v&st=mk5xe6qa&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/64jkj3smo9923pzew3x7i/Screenshot_20220711_161708_com.huawei.himovie.overseas.jpg?rlkey=rslq03g2jcoywc1zbur2h5e2u&st=g1p381d1&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ccx00n9y89xteyj1bbmez/Screenshot_20220711_200133_com.reddit.frontpage.jpg?rlkey=x54jd48dl3slqx1op7rd78j1l&st=3o889aqz&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/snkjmjvlqbn0de7qf8lbc/Screenshot_20220711_200143_com.reddit.frontpage.jpg?rlkey=nfebdq3kzwvigyvajx10oxoqw&st=rua78nnw&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/3yzmg5vd05i41f2mm95jn/Screenshot_20220713_231445_com.huawei.himovie.overseas.jpg?rlkey=v38btimcjnzagucsmpwjc4ik1&st=znpzcr31&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/t0omqmwqkkjmevpo0y8jt/Screenshot_20220713_232411_com.snapchat.android.jpg?rlkey=vkw7580qbhgy8vm8zi56947za&st=7zlujsza&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/tboj1qgwcp757hxkvy1db/Screenshot_20220714_000334_com.snapchat.android.jpg?rlkey=z0xph52g22xvk9v17ptjp21i1&st=xpn7u14j&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/8obezzqkc2mqlhzfjxny6/Screenshot_20220713_232414_com.snapchat.android.jpg?rlkey=le7e0wrulnavp28zbl4p7qp0l&st=vrp0ls91&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/baps95sdz0r5e5so4psiu/Screenshot_20220714_000859_com.snapchat.android.jpg?rlkey=wa22v82vxdu40xa86e8br787g&st=7lgy6nk0&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/em22ipodoyeb51bcwybhg/Screenshot_20220714_001640_com.snapchat.android.jpg?rlkey=21qg6rkqqet8xf8trgtembaiz&st=w7mz6gmu&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/b04cr9yofoqre089ias0f/Screenshot_20220714_001643_com.snapchat.android.jpg?rlkey=7oyphviz84y2ni3vysv5dufbp&st=4bqsv74u&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/dh6v163jmy3yzi40tvhce/Screenshot_20220714_001647_com.snapchat.android.jpg?rlkey=4ba16gfjf56y1xftykj1lfglm&st=gk1gonpn&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/c5favnmcz01a2271vuiqp/Screenshot_20220714_001650_com.snapchat.android.jpg?rlkey=mr64x8998wj3s8rgif3qwc3jd&st=adezomg3&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/oq4jcdommiicbd0ukl1o1/Screenshot_20220714_001653_com.snapchat.android.jpg?rlkey=m4nflok6z5flbltf4sq8hntwj&st=p8xybqek&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/krrj0vxe6d3lpmqx3sxo0/Screenshot_20220714_005858_com.huawei.himovie.overseas.jpg?rlkey=5jewiz36316t1a0mjbksu4ou4&st=0xtx4f6s&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/xu93g1t3iqtgogukzbi87/Screenshot_20220716_223457_com.snapchat.android.jpg?rlkey=73xavc5im8kmnvkuk33dsbb4l&st=a7igc7qn&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/qo6g4nfh1fk10fx5i2u23/Screenshot_20220716_223522_com.snapchat.android.jpg?rlkey=riue00pragj9c05jc0m86w1c7&st=a9f0sr41&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ax9tnvgyrezkerlovmnjf/Screenshot_20220716_223525_com.snapchat.android.jpg?rlkey=z2u1eklpva2ahpahkb0ieq13i&st=c9o3hvv7&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/s1pqffc5g5p1gycwmfkct/Screenshot_20220716_223527_com.snapchat.android.jpg?rlkey=twn88if9u7khry3d2tgemh8it&st=hfqepol0&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/edpa8xvgjbpmh1kkwlb9o/Screenshot_20220716_223627_com.snapchat.android.jpg?rlkey=9bnfztz1pya8qpy1276zoemd1&st=swh5rn1p&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/66c1nnibco81vi8n0ev8b/Screenshot_20220716_223629_com.snapchat.android.jpg?rlkey=39l6kdj33ivpq6azpvdhoem9r&st=7dii6328&&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/o6cw6nyx871d40c6fpiwz/Screenshot_20220716_223630_com.snapchat.android.jpg?rlkey=wembhs0f4q060s7f8p7fw7cgh&st=ordbj4sq&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/6snkwydytwdsvzkpq41vf/Screenshot_20220716_223643_com.snapchat.android.jpg?rlkey=qaqq3ld0tlcikuk9yrafhzzh6&st=yhz0n7gx&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/h9ccz4g9mj2k7wjf8nx3a/Screenshot_20220716_224043_com.snapchat.android.jpg?rlkey=vcjdpnsedmfun715ja01s4ktx&st=j74vfqjt&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/kv6ne10ihpswar6ae73w0/Screenshot_20220716_224045_com.snapchat.android.jpg?rlkey=64ai5xebhj6sc5yddz6gahak7&st=k01g0ym1&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/84twbb4eczifjll9qqofz/Screenshot_20220716_224047_com.snapchat.android.jpg?rlkey=ix2hyg0l5bjaawc4uguhya35f&st=r5r3mlz7&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/gb1d167gyq5a1v2kstqx4/Screenshot_20220716_224050_com.snapchat.android.jpg?rlkey=5obzxw16i43120hsu6buedjtf&st=yzxkpfsw&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/rxo58ekgh0c83y5kd8esx/Screenshot_20220828_124533_org.telegram.messenger.jpg?rlkey=uy6zsob8dg6dk5r3c33b7xn7l&st=mumr5ct4&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/8npa0i3z67ge2ap846u9o/Screenshot_20220828_124535_org.telegram.messenger.jpg?rlkey=xjk4t4jmo0g8l6vrmrmkqtcj0&st=068gbh3j&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/o38vkmvpqtqq2raswdi5o/Screenshot_20220828_124537_org.telegram.messenger.jpg?rlkey=oax9wdkqoeicwac2x5fl65xnx&st=1hqr5tgd&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/c7wbc77o1hodae27vb1qc/Screenshot_20220828_124538_org.telegram.messenger.jpg?rlkey=ta5nl26e6jpejs968ylhqnvz6&st=nmxo5ry1&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/v7plqr4ymv6vzmts5y2v2/Snapchat-259809776.jpg?rlkey=bddmhs00dloafq406w8u1foxv&st=51g8so3e&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/9pq68hve1yljpd0cku387/Snapchat-273197650.jpg?rlkey=qi8pwjed4rw6y71qa8gee9tk1&st=izbax6ou&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/dfdn1e76froeeqw3vou1x/Snapchat-285984575.jpg?rlkey=kj1lhe1z5qa7j2losbhrl882o&st=arbgmmpf&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/kcc0jxhqv5f26qj7vlmyf/Snapchat-335910375.jpg?rlkey=sn2kh44grqtofdm9bsblkppcm&st=fo8i619w&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/m1gh9h0szl6soglbgzdez/Snapchat-347903405.jpg?rlkey=0486yz97b22s3pcnvnjcfq7mo&st=88ombvzy&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/xiipxgzcs8h7ttyctm8h6/Snapchat-566687395.jpg?rlkey=6higmi5p2gl3bzyk17itanbzw&st=ccdkbkn6&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/rzt2o8y1gang6opwm8u82/Snapchat-578552676.jpg?rlkey=8p48u16torzdervgrfilpi4we&st=3l0my095&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/5h3uhiyvupgq180etvq7k/Snapchat-598646331.jpg?rlkey=w5n919ws10mtu3by0v5uv6hql&st=sl509z5z&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/y4jq0cyxdks07hg555top/Snapchat-872874078.jpg?rlkey=waler7d0h00r67tkclh2nk3fe&st=xmab9zqp&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/9xfh77uuj73420qugc0az/Snapchat-1086957095.jpg?rlkey=e10pb7rs39hfpme62t6nic1jf&st=hpnhzmff&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/miwp5xui24omc5d7fcdl0/Snapchat-1159560430.jpg?rlkey=17xpc8zvwmhyrqsl89nnz2izq&st=ykcjk3oo&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/1va1lfdglghvi5miox49l/Snapchat-1219069380.jpg?rlkey=ubhof4iiy8a3jjh4vp0yakx49&st=20w1x7bn&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/dx67vkkvn56542gjrx0hh/Snapchat-1273279216.jpg?rlkey=8wvc44b935ancw5qohck4j8m7&st=b864jaha&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/gbc8ss9mdpg2iwl8li9sz/Snapchat-1396554327.jpg?rlkey=4f0tdshdo6kvsrb1vtp91hgh8&st=zyigwpup&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/q5t6lmnygtfq43baq0awc/Snapchat-1571985796.jpg?rlkey=jh3wkyim36hanoprt1gxmllst&st=zz0jlkcs&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/gbswv7p3opfj9wtddio52/Snapchat-1596071810.jpg?rlkey=pru17t4vbrp6fkig2a0p8640z&st=jy3irfed&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/wqpnrpvr9ab9oy35qd9a4/Snapchat-2000271374.jpg?rlkey=tpjqbubp9jsfberrdy49h90zd&st=ba9onhiw&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/tg23kujvmf3gpm1ypfddp/Snapchat-2135800664.jpg?rlkey=sr4480cgsxnxacqxts347f16w&st=4t1ao2rw&raw=1">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-julka')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-julka')">?</a>
   </div>
 </div>
 
 <!-- SONGHELI -->
 <div id="SONGHELI" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-songheli">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-songheli')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-songheli')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-songheli')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-songheli')">?</a>
   </div>
 </div>
 
 <!-- JEZIOROWSKA -->
 <div id="JEZIOROWSKA" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-jeziorowska">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-jeziorowska')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-jeziorowska')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-jeziorowska')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-jeziorowska')">?</a>
   </div>
 </div>
 
 <!-- MADZIA-LOSKOT -->
 <div id="MADZIA-LOSKOT" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-madzia">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-madzia')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-madzia')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-madzia')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-madzia')">?</a>
   </div>
 </div>
 
 <!-- BUNNY-MARTHY -->
 <div id="BUNNY-MARTHY" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-bunny">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <img loading="lazy" alt="Zdj�cie premium" src="">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-bunny')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-bunny')">›</a>
+    <img src="">
+    <img src="">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-bunny')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-bunny')">?</a>
   </div>
 
 <!-- Stopy -->
 <div id="Stopy" class="gallery">
-  <a href="#" class="close">✕</a>
+  <a href="#" class="close">?</a>
   <div class="slide-container" id="slides-stopy">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/g69dpohb2wniszxoyq70m/IMG_8534.jpg?rlkey=pjttnoktwgb4q6df0xaa48a9l&st=9bfkbpct&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/grof0yc89xw73aa5455mu/IMG_8531.jpg?rlkey=8q48xn8py8rzrw1o5uwj86pb9&st=05ivxj5u&raw=1">
-    <img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/f4b5woh1laj9fp6d2wkmd/IMG_8530.jpg?rlkey=xb5p5zvw9abfmfxmcxuulcpny&st=fry9238r&raw=1">
-    <div class="watermark">© YOUR NAME</div>
-    <a class="nav-btn prev" onclick="prevSlide('slides-stopy')">‹</a>
-    <a class="nav-btn next" onclick="nextSlide('slides-stopy')">›</a>
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/g69dpohb2wniszxoyq70m/IMG_8534.jpg?rlkey=pjttnoktwgb4q6df0xaa48a9l&st=9bfkbpct&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/grof0yc89xw73aa5455mu/IMG_8531.jpg?rlkey=8q48xn8py8rzrw1o5uwj86pb9&st=05ivxj5u&raw=1">
+    <img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/f4b5woh1laj9fp6d2wkmd/IMG_8530.jpg?rlkey=xb5p5zvw9abfmfxmcxuulcpny&st=fry9238r&raw=1">
+    <div class="watermark">? YOUR NAME</div>
+    <a class="nav-btn prev" onclick="prevSlide('slides-stopy')">?</a>
+    <a class="nav-btn next" onclick="nextSlide('slides-stopy')">?</a>
   </div>
 
 
 <div id="STREET" class="gallery">
-<a href="#" class="close">✕</a>
+<a href="#" class="close">?</a>
 <div class="slide-container" id="slides-street">
-<img loading="lazy" alt="Zdj�cie premium" src="">
-<div class="watermark">© YOUR NAME</div>
-<a class="nav-btn prev" onclick="prevSlide('slides-street')">‹</a>
-<a class="nav-btn next" onclick="nextSlide('slides-street')">›</a>
+<img src="">
+<div class="watermark">? YOUR NAME</div>
+<a class="nav-btn prev" onclick="prevSlide('slides-street')">?</a>
+<a class="nav-btn next" onclick="nextSlide('slides-street')">?</a>
 </div>
 </div>
 
-<!-- Analogicznie galerie dla pozostałych kategorii -->
-<div id="SOPHIE-RAIN" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-sophie"><img loading="lazy" alt="Zdj�cie premium" src=""><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-sophie')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-sophie')">›</a></div></div>
-<div id="SANDRA-ZALECKA" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-sandra"><img loading="lazy" alt="Zdj�cie premium" src=""><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-sandra')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-sandra')">›</a></div></div>
-<div id="NIKITA" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-nikita"><img loading="lazy" alt="Zdj�cie premium" src=""><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-nikita')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-nikita')">›</a></div></div>
-<div id="YUKI" class="gallery"><a href="#" class="close">✕</a><div class="slide-container" id="slides-yuki"><img loading="lazy" alt="Zdj�cie premium" src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1"><div class="watermark">© YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-yuki')">‹</a><a class="nav-btn next" onclick="nextSlide('slides-yuki')">›</a></div></div>
+<!-- Analogicznie galerie dla pozosta?ych kategorii -->
+<div id="SOPHIE-RAIN" class="gallery"><a href="#" class="close">?</a><div class="slide-container" id="slides-sophie"><img src=""><div class="watermark">? YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-sophie')">?</a><a class="nav-btn next" onclick="nextSlide('slides-sophie')">?</a></div></div>
+<div id="SANDRA-ZALECKA" class="gallery"><a href="#" class="close">?</a><div class="slide-container" id="slides-sandra"><img src=""><div class="watermark">? YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-sandra')">?</a><a class="nav-btn next" onclick="nextSlide('slides-sandra')">?</a></div></div>
+<div id="NIKITA" class="gallery"><a href="#" class="close">?</a><div class="slide-container" id="slides-nikita"><img src=""><div class="watermark">? YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-nikita')">?</a><a class="nav-btn next" onclick="nextSlide('slides-nikita')">?</a></div></div>
+<div id="YUKI" class="gallery"><a href="#" class="close">?</a><div class="slide-container" id="slides-yuki"><img loading="eager" alt="Zdj?cie premium" src="https://www.dropbox.com/scl/fi/ja1iqie8upfoz62sko4sv/yukiszwaczka-1-2.webp?rlkey=2frzn4l25zutiprp1w8fjia8k&st=chjjcxzq&raw=1"><div class="watermark">? YOUR NAME</div><a class="nav-btn prev" onclick="prevSlide('slides-yuki')">?</a><a class="nav-btn next" onclick="nextSlide('slides-yuki')">?</a></div></div>
 
-<!-- Dodaj resztę analogicznie z pustymi img src -->
+<!-- Dodaj reszt? analogicznie z pustymi img src -->
 
 <script>
 // ================= SLIDER KATEGORII =================
 function scrollSlider(direction){
   const slider = document.getElementById('categorySlider');
-  const scrollAmount = 320; // przesunięcie w px
+  const scrollAmount = 320; // przesuni?cie w px
   slider.scrollBy({left: scrollAmount*direction, behavior:'smooth'});
 }
 
 // ================= GALERIE =================
-let autoplayIntervals = {};
-
 function nextSlide(id){
-  const container = document.getElementById(id);
+  const container=document.getElementById(id);
   container.appendChild(container.querySelector('img:first-child'));
-  updateCounter(id);
 }
 function prevSlide(id){
-  const container = document.getElementById(id);
+  const container=document.getElementById(id);
   container.insertBefore(container.querySelector('img:last-child'), container.firstChild);
-  updateCounter(id);
 }
-
-function updateCounter(id) {
-  const container = document.getElementById(id);
-  const images = container.querySelectorAll('img');
-  const currentIndex = Array.from(images).findIndex(img => img.style.display !== 'none' || true); // since all are visible but cycled
-  // Actually, since they cycle, the first img is current
-  const counterId = 'counter-' + id.split('-')[1];
-  const counter = document.getElementById(counterId);
-  if (counter) {
-    counter.textContent = `1 / ${images.length}`; // simplified, always 1 since cycling
-  }
-}
-
-function toggleAutoplay(id) {
-  const btn = document.querySelector(`[onclick="toggleAutoplay('${id}')"]`);
-  const progressId = 'progress-' + id.split('-')[1];
-  const progressBar = document.getElementById(progressId);
-  if (autoplayIntervals[id]) {
-    clearInterval(autoplayIntervals[id]);
-    delete autoplayIntervals[id];
-    btn.textContent = '▶';
-    btn.classList.remove('active');
-    if (progressBar) progressBar.classList.remove('active');
-  } else {
-    autoplayIntervals[id] = setInterval(() => nextSlide(id), 3000);
-    btn.textContent = '⏸';
-    btn.classList.add('active');
-    if (progressBar) progressBar.classList.add('active');
-  }
-}
-
-// ================= KEYBOARD NAVIGATION =================
-document.addEventListener('keydown', function(e) {
-  const galleries = document.querySelectorAll('.gallery:target');
-  if (galleries.length === 0) return;
-  const gallery = galleries[0];
-  const id = gallery.querySelector('.slide-container').id;
-  switch(e.key) {
-    case 'ArrowRight':
-      nextSlide(id);
-      break;
-    case 'ArrowLeft':
-      prevSlide(id);
-      break;
-    case 'Escape':
-      window.location.hash = '';
-      break;
-    case ' ':
-      e.preventDefault();
-      toggleAutoplay(id);
-      break;
-  }
-});
-
-// ================= ZOOM ON CLICK =================
-document.addEventListener('click', function(e) {
-  if (e.target.tagName === 'IMG' && e.target.closest('.gallery')) {
-    const img = e.target;
-    const rect = img.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const width = rect.width;
-    const galleries = document.querySelectorAll('.gallery:target');
-    if (galleries.length) {
-      const id = galleries[0].querySelector('.slide-container').id;
-      if (x < width / 3) {
-        prevSlide(id);
-      } else if (x > 2 * width / 3) {
-        nextSlide(id);
-      } else {
-        img.classList.toggle('zoomed');
-      }
-    }
-  }
-});
-
-// ================= LOADING INDICATOR =================
-document.querySelectorAll('img').forEach(img => {
-  if (img.complete) {
-    img.classList.remove('loading');
-  } else {
-    img.classList.add('loading');
-    img.addEventListener('load', () => img.classList.remove('loading'));
-    img.addEventListener('error', () => img.classList.remove('loading'));
-  }
-});
-
-// ================= SEARCH FILTER =================
-function filterCategories() {
-  const input = document.getElementById('searchInput');
-  const filter = input.value.toUpperCase();
-  const categories = document.querySelectorAll('.category');
-  categories.forEach(cat => {
-    const text = cat.querySelector('span').textContent.toUpperCase();
-    if (text.indexOf(filter) > -1) {
-      cat.style.display = '';
-    } else {
-      cat.style.display = 'none';
-    }
-  });
-}
-
-// ================= TOUCH SUPPORT =================
-let startX;
-document.addEventListener('touchstart', e => startX = e.touches[0].clientX);
-document.addEventListener('touchend', e => {
-  if (!startX) return;
-  const endX = e.changedTouches[0].clientX;
-  const diff = startX - endX;
-  if (Math.abs(diff) > 50) {
-    const galleries = document.querySelectorAll('.gallery:target');
-    if (galleries.length) {
-      const id = galleries[0].querySelector('.slide-container').id;
-      if (diff > 0) nextSlide(id);
-      else prevSlide(id);
-    }
-  }
-  startX = null;
-});
-
-// ================= FULLSCREEN TOGGLE =================
-function toggleFullscreen() {
-  if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen().catch(err => console.log(err));
-  } else {
-    document.exitFullscreen();
-  }
-}
-
-// ================= RANDOM IMAGE =================
-function randomImage(id) {
-  const container = document.getElementById(id);
-  const images = Array.from(container.querySelectorAll('img'));
-  if (images.length > 1) {
-    // Shuffle the images array
-    for (let i = images.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [images[i], images[j]] = [images[j], images[i]];
-    }
-    // Clear and re-append shuffled images
-    container.innerHTML = '';
-    images.forEach(img => container.appendChild(img));
-    // Re-add watermark and nav buttons
-    const watermark = document.createElement('div');
-    watermark.className = 'watermark';
-    watermark.textContent = '© YOUR NAME';
-    container.appendChild(watermark);
-    const prevBtn = document.createElement('a');
-    prevBtn.className = 'nav-btn prev';
-    prevBtn.onclick = () => prevSlide(id);
-    prevBtn.textContent = '‹';
-    container.appendChild(prevBtn);
-    const nextBtn = document.createElement('a');
-    nextBtn.className = 'nav-btn next';
-    nextBtn.onclick = () => nextSlide(id);
-    nextBtn.textContent = '›';
-    container.appendChild(nextBtn);
-  }
-}
-
-// ================= CLOSE GALLERY =================
-function closeGallery() {
-  window.location.hash = '';
-}
-
-// ================= ADD IMAGE WRAPPERS =================
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.slide-container img').forEach(img => {
-    const wrapper = document.createElement('div');
-    wrapper.className = 'image-wrapper';
-    img.parentNode.insertBefore(wrapper, img);
-    wrapper.appendChild(img);
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'image-close';
-    closeBtn.onclick = closeGallery;
-    closeBtn.textContent = '✕';
-    wrapper.appendChild(closeBtn);
-  });
-});
 </script>
-
-<footer style="text-align:center;padding:20px;color:#666;font-size:14px;">
-© 2025 Premium Gallery. All rights reserved.
-</footer>
 
 </body>
 </html>
