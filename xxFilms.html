@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
+<meta property="og:title" content="POLOFLIX">
+<meta property="og:description" content="Filmy i Shorts w stylu Netflix">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#141414">
+<link rel="preconnect" href="https://www.dropbox.com">
+<link rel="dns-prefetch" href="https://www.dropbox.com">
 <meta charset="UTF-8">
 <title>POLOFLIX – FILMY & SHORTS</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,6 +54,13 @@ video{width:100%}
 .action{position:absolute;bottom:6px;left:6px;background:rgba(0,0,0,.7);padding:4px 6px;border-radius:4px;font-size:11px;cursor:pointer}
 .view{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);padding:2px 6px;border-radius:3px;font-size:10px}
 .rec{outline:2px solid var(--red)}
+/* polish */
+.movie .title{position:absolute;left:6px;bottom:6px;font-size:11px;background:rgba(0,0,0,.7);padding:3px 6px;border-radius:4px}
+.movie video.preview{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:none}
+.movie:hover video.preview{display:block}
+.lazy{filter:blur(6px)}
+body.darker{background:#0b0b0b}
+body.kids .badge{display:none}
 </style>
 </head>
 <body>
@@ -100,7 +113,7 @@ video{width:100%}
 <button onclick="acceptAge()" style="padding:12px 24px;font-size:18px;background:#e50914;border:none;color:#fff;border-radius:6px;cursor:pointer">Mam 18 lat</button>
 </div>
 
-<div class="nav"><input id="search" placeholder="Szukaj..." style="margin-right:16px;padding:6px;border-radius:4px;border:none">
+<div class="nav"><button id="themeBtn" style="margin-right:8px">🌙</button><button id="kidsBtn" style="margin-right:12px">👶 Kids</button><input id="search" placeholder="Szukaj..." style="margin-right:16px;padding:6px;border-radius:4px;border:none">
   <div class="logo">POLOFLIX</div>
   <input id="search" placeholder="Szukaj..." style="margin-left:auto;background:#222;border:none;color:#fff;padding:6px 10px;border-radius:4px">
   <button class="profileBtn" onclick="openProfiles()">Profil</button>
@@ -108,6 +121,10 @@ video{width:100%}
   <input id="search" placeholder="Szukaj..." style="margin-left:auto;background:#222;border:none;color:#fff;padding:6px 10px;border-radius:4px">
 </div></div>
 <div class="tabs">
+  <div class="tab active" data-tab="filmy">Filmy</div>
+  <div class="tab" data-tab="shorts">Shorts</div>
+  <div class="tab" data-tab="mylist">Moja Lista</div>
+  <div class="tab" data-tab="history">Historia</div>
   <div class="tab" data-tab="mylist">Moja Lista</div>
   <div class="tab active" data-tab="filmy">Filmy</div>
   <div class="tab" data-tab="shorts">Shorts</div>
@@ -236,14 +253,33 @@ video{width:100%}
   <div class="row"><h2>⭐ Moja Lista</h2><div class="movies" id="mylistRow"></div></div>
 </div>
 
+<!-- HISTORIA -->
+<div class="section" id="history">
+  <div class="row"><h2>🕘 Ostatnio oglądane</h2>
+    <div class="movies" id="historyRow"></div>
+  </div>
+</div>
+
 <!-- PLAYERS -->
 <div class="player-bg" id="playerBg"><span class="close" id="closeFilm">×</span><div class="player-box"><video id="filmPlayer" controls></video></div></div>
 <div id="shortsPlayer"><video id="shortsVideo" autoplay muted loop></video><div id="shortsUI"><button id="likeBtn">❤️</button><button onclick="closeShorts()">✕</button></div></div>
 
 <script>
+// THEME
+const themeBtn=document.getElementById('themeBtn');themeBtn.onclick=()=>{document.body.classList.toggle('darker');localStorage.setItem('theme',document.body.classList.contains('darker')?'darker':'dark')};if(localStorage.getItem('theme')==='darker')document.body.classList.add('darker');
+
+// KIDS MODE
+const kidsBtn=document.getElementById('kidsBtn');kidsBtn.onclick=()=>{document.body.classList.toggle('kids');localStorage.setItem('kids',document.body.classList.contains('kids')?'1':'0')};if(localStorage.getItem('kids')==='1')document.body.classList.add('kids');
+
+// LAZY IMAGES
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const img=e.target;img.src=img.dataset.src;img.classList.remove('lazy');io.unobserve(img)}}));document.querySelectorAll('img').forEach(img=>{if(!img.src){img.dataset.src=img.getAttribute('data-src')||img.src;img.classList.add('lazy');io.observe(img)}});
+
+// AUTOPLAY PREVIEW ON HOVER (MUTED)
+document.querySelectorAll('.movie').forEach(m=>{const v=document.createElement('video');v.className='preview';v.muted=true;v.loop=true;v.src=m.dataset.src||'';m.appendChild(v);m.addEventListener('mouseenter',()=>{if(v.src)v.play()});m.addEventListener('mouseleave',()=>{v.pause();v.currentTime=0})});
+
 // history + recommendations
 function addHistory(src){const k='history_'+(localStorage.getItem('activeProfile')||'default');let h=JSON.parse(localStorage.getItem(k)||'[]');h=h.filter(x=>x!==src);h.unshift(src);h=h.slice(0,20);localStorage.setItem(k,JSON.stringify(h))}
-function recommend(){const h=JSON.parse(localStorage.getItem('history_'+(localStorage.getItem('activeProfile')||'default'))||'[]');if(!h.length) return;const pick=h[0];document.querySelectorAll('.movie').forEach(m=>{if(m.dataset.src===pick)m.classList.add('rec')})}
+function recommend();renderHistory(){const h=JSON.parse(localStorage.getItem('history_'+(localStorage.getItem('activeProfile')||'default'))||'[]');if(!h.length) return;const pick=h[0];document.querySelectorAll('.movie').forEach(m=>{if(m.dataset.src===pick)m.classList.add('rec')})}
 
 
 // 18+ gate
@@ -260,7 +296,10 @@ pbtns.forEach(b=>b.onclick=()=>{localStorage.setItem('activeProfile',b.innerText
 function getList(){const k='mylist_'+(localStorage.getItem('activeProfile')||'default');return JSON.parse(localStorage.getItem(k)||'[]')}
 function setList(a){const k='mylist_'+(localStorage.getItem('activeProfile')||'default');localStorage.setItem(k,JSON.stringify(a))}
 function toggleList(src,thumb){let a=getList();const i=a.findIndex(x=>x.src===src);if(i>-1)a.splice(i,1);else a.push({src,thumb});setList(a);renderMyList()}
-function renderMyList(){const row=document.getElementById('mylistRow');if(!row) return;row.innerHTML='';getList().forEach(i=>{const d=document.createElement('div');d.className='movie';d.dataset.src=i.src;d.innerHTML=`<img src="${i.thumb}">`;d.onclick=()=>{filmPlayer.src=i.src;filmBg.style.display='flex';filmPlayer.play();addHistory(m.dataset.src);recommend()};row.appendChild(d)})}
+function renderMyList(){const row=document.getElementById('mylistRow');if(!row) return;row.innerHTML='';getList().forEach(i=>{const d=document.createElement('div');d.className='movie';d.dataset.src=i.src;d.innerHTML=`<img src="${i.thumb}"><div class=\"title\">Z listy</div>`;d.onclick=()=>{filmPlayer.src=i.src;filmBg.style.display='flex';filmPlayer.play()};row.appendChild(d)})}
+
+function renderHistory(){const row=document.getElementById('historyRow');if(!row) return;row.innerHTML='';const h=JSON.parse(localStorage.getItem('history_'+(localStorage.getItem('activeProfile')||'default'))||'[]');h.forEach(src=>{const d=document.createElement('div');d.className='movie';d.dataset.src=src;d.innerHTML=`<img src="">`;d.onclick=()=>{filmPlayer.src=src;filmBg.style.display='flex';filmPlayer.play()};row.appendChild(d)})}
+">`;d.onclick=()=>{filmPlayer.src=i.src;filmBg.style.display='flex';filmPlayer.play();addHistory(m.dataset.src);recommend()};row.appendChild(d)})}
 
 // attach actions
 function attachActions(){document.querySelectorAll('.movie').forEach(m=>{
@@ -354,6 +393,8 @@ document.getElementById('likeBtn').onclick=()=>{let s=shorts[current];let l=+s.d
 sp.addEventListener('wheel',e=>{if(e.deltaY>0)next();else prev()});
 function next(){current=(current+1)%shorts.length;sv.src=shorts[current].dataset.src;sv.play()}
 function prev(){current=(current-1+shorts.length)%shorts.length;sv.src=shorts[current].dataset.src;sv.play()}
+// keyboard navigation
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){filmBg.style.display='none';closeShorts()}});
 </script>
 </body>
 </html>
